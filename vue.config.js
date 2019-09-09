@@ -31,7 +31,7 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     port: port,
-    open: true,
+    open: false,
     overlay: {
       warnings: false,
       errors: true
@@ -87,9 +87,26 @@ module.exports = {
       .loader('vue-loader')
       .tap(options => {
         options.compilerOptions.preserveWhitespace = true
+        // options.loaders.scss = options.loaders.scss.concat({
+        //   loader: 'sass-resources-loader',
+        //   options: {
+        //     resources: path.resolve('./src/styles/variables.scss')
+        //   }
+        // })
         return options
       })
       .end()
+    config.module
+      .rule('scss').oneOfs.store.forEach(item => {
+        item
+          .use('sass-resources-loader')
+          .loader('sass-resources-loader')
+          .options({
+          // Provide path to the file with resources
+            resources: './src/styles/variables.scss'
+          })
+          .end()
+      })
 
     config
     // https://webpack.js.org/configuration/devtool/#development

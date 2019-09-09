@@ -1,6 +1,11 @@
 <template>
   <div class="navbar">
-    <logo v-if="true" :collapse="false" />
+    <!-- <logo v-if="true" :collapse="false" /> -->
+    <router-link to="/">
+      <div class="logo-wrapper">
+        ♞ Drive Thru
+      </div>
+    </router-link>
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -30,11 +35,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Logo from '../components/Sidebar/Logo'
+// import Logo from '../components/Sidebar/Logo'
 
 export default {
   components: {
-    Logo
+    // Logo
   },
   computed: {
     ...mapGetters([
@@ -63,13 +68,25 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background: #fff;
+  background: $navBarBg;
   // box-shadow: 0 1px 4px rgba(0,21,41,.08);
   padding-left: 200px;
   .breadcrumb-container {
     float: left;
   }
-
+  .logo-wrapper{
+    width: 200px;
+    height: 50px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    font-weight: 700;
+  }
   .right-menu {
     float: right;
     height: 100%;
