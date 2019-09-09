@@ -85,24 +85,18 @@ export default {
       return this.flatMenu(this.routes)
     }
   },
-  created() {
-    console.log(this.$router)
-  },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },
     flatMenu(menu) {
-      console.log('flat it?', menu)
       const newMenu = []
       const flat = (menu) => {
         Object.keys(menu).forEach((key) => {
           if (menu[key].hidden === true) {
-            console.log('hidden', menu[key])
             return
           }
           if (menu[key].children) {
-            console.log('has child', menu[key])
             flat(menu[key].children)
           } else if (menu[key].path && menu[key].name) {
             newMenu.push(menu[key])
@@ -112,7 +106,6 @@ export default {
         })
       }
       flat(menu)
-      console.log(newMenu)
       return newMenu
     }
   }
