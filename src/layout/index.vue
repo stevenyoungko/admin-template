@@ -3,10 +3,11 @@
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <navbar />
     <sidebar class="sidebar-container" />
-    <div :class="{hasTagsView:needTagsView}" class="main-container">
-      <div :class="{'fixed-header':fixedHeader}" class="tab-wrapper">
-        <tags-view v-if="needTagsView" />
+    <div class="main-container">
+      <div class="fixed-header tab-wrapper">
+        <tags-view />
         <div class="bread-wrapper">
+          <i class="el-icon-caret-right" />
           <breadcrumb class="breadcrumb-container" />
         </div>
       </div>
@@ -19,9 +20,9 @@
 </template>
 
 <script>
-import RightPanel from '@/components/core/RightPanel'
+// import RightPanel from '@/components/core/RightPanel'
 import Breadcrumb from '@/components/core/Breadcrumb'
-import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
+import { AppMain, Navbar, Sidebar, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 
@@ -30,8 +31,8 @@ export default {
   components: {
     AppMain,
     Navbar,
-    RightPanel,
-    Settings,
+    RightPanel: () => import('@/components/core/RightPanel'),
+    Settings: () => import('./components/Settings/index'),
     Sidebar,
     TagsView,
     Breadcrumb
@@ -42,7 +43,6 @@ export default {
       sidebar: state => state.app.sidebar,
       device: state => state.app.device,
       showSettings: state => state.settings.showSettings,
-      needTagsView: state => state.settings.tagsView,
       fixedHeader: state => state.settings.fixedHeader
     }),
     classObj() {
@@ -92,6 +92,10 @@ export default {
         display: flex;
         align-items: center;
         height: calc(70px - 44px);
+        padding-left: 4px;
+        .el-icon-caret-right{
+          color: #666;
+        }
       }
     }
   }
@@ -114,7 +118,8 @@ export default {
     z-index: 100;
     width: calc(100% - #{$sideBarWidth} - 8px);
     transition: width 0.28s;
-    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+    // box-shadow: 0 1px 4px rgba(0,21,41,.08);
+    border-bottom: 1px solid #d9d9d9;
   }
 
   .hideSidebar .fixed-header {

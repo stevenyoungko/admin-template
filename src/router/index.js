@@ -22,6 +22,7 @@ import Layout from '@/layout'
     icon: 'svg-name'             the icon show in the sidebar
     breadcrumb: false            if set false, the item will hidden in breadcrumb(default is true)
     activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
+    noCache: true //如果设置为true，则不会被 <keep-alive> 缓存(默认 false)
   }
  */
 

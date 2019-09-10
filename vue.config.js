@@ -6,7 +6,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || 'ps-admin' // page title
+const name = defaultSettings.title || 'PS-admin' // page title
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
@@ -103,7 +103,7 @@ module.exports = {
           .loader('sass-resources-loader')
           .options({
           // Provide path to the file with resources
-            resources: './src/styles/variables.scss'
+            resources: ['./src/styles/variables.scss', './src/styles/mixin.scss']
           })
           .end()
       })

@@ -1,13 +1,12 @@
 <template>
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
-      <!-- <keep-alive :include="cachedViews"> -->
-      <router-view :key="key" />
-      <!-- </keep-alive> -->
+      <keep-alive :include="cachedViews">
+        <router-view :key="key" />
+      </keep-alive>
     </transition>
   </section>
 </template>
-
 <script>
 
 export default {
@@ -26,28 +25,16 @@ export default {
 <style lang="scss" scoped>
 .app-main {
   /* 50= navbar  50  */
-  min-height: calc(100vh - 120px);
+  height: calc(100vh - 120px);
   width: 100%;
   position: relative;
-  overflow: hidden;
   background-color: #fff;
   padding: 0;
+  overflow-x: hidden;
+  overflow-x: auto;
+  @include scrollBar;
 }
 
-// .fixed-header+.app-main {
-//   // padding-top: 50px;
-// }
-
-.hasTagsView {
-  .app-main {
-    /* 84 = navbar + tags-view = 50 + 34 */
-    min-height: calc(100vh - 120px);
-  }
-
-  // .fixed-header+.app-main {
-  //   // padding-top: 74px;
-  // }
-}
 </style>
 
 <style lang="scss">

@@ -14,7 +14,7 @@ router.beforeEach(async(to, from, next) => {
   // start progress bar
   NProgress.start()
 
-  // set page title
+  // set page title 動態路由變更document.title 如需要擴充到by router 改title 請至'@/utils/get-page-title' 解掉註解
   document.title = getPageTitle(to.meta.title)
 
   // determine whether the user has logged in

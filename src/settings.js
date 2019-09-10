@@ -1,5 +1,15 @@
 module.exports = {
-  title: 'ps-admin',
+  /**
+   * @type {String}
+   * @description 變更document.title
+   */
+  title: 'PS-admin',
+
+  /**
+   * @type {String}
+   * @description 左上角LOGO字串
+   */
+  logoName: '♞ Drive Thru',
 
   /**
    * @type {boolean} true | false
@@ -8,20 +18,8 @@ module.exports = {
   showSettings: false,
 
   /**
-   * @type {boolean} true | false
-   * @description Whether need tagsView
-   */
-  tagsView: true,
-
-  /**
-   * @type {boolean} true | false
-   * @description Whether fix the header
-   */
-  fixedHeader: true,
-
-  /**
    * @type {string}
-   * @description set TokenKey in LocalStorage
+   * @description set TokenKey in LocalStorage Detail Check @/utils/auth.js
    */
   acessTokenKey: 'vue_admin_template_token'
 }

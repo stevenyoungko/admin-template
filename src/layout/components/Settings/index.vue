@@ -8,16 +8,6 @@
         <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange" />
       </div>
 
-      <div class="drawer-item">
-        <span>Open Tags-View</span>
-        <el-switch v-model="tagsView" class="drawer-switch" />
-      </div>
-
-      <div class="drawer-item">
-        <span>Fixed Header</span>
-        <el-switch v-model="fixedHeader" class="drawer-switch" />
-      </div>
-
     </div>
   </div>
 </template>
@@ -29,30 +19,6 @@ export default {
   components: { ThemePicker },
   data() {
     return {}
-  },
-  computed: {
-    fixedHeader: {
-      get() {
-        return this.$store.state.settings.fixedHeader
-      },
-      set(val) {
-        this.$store.dispatch('settings/changeSetting', {
-          key: 'fixedHeader',
-          value: val
-        })
-      }
-    },
-    tagsView: {
-      get() {
-        return this.$store.state.settings.tagsView
-      },
-      set(val) {
-        this.$store.dispatch('settings/changeSetting', {
-          key: 'tagsView',
-          value: val
-        })
-      }
-    }
   },
   methods: {
     themeChange(val) {
