@@ -1,7 +1,7 @@
 module.exports = {
   /**
    * @type {String}
-   * @description 變更document.title
+   * @description 變更document.title 預設 PS-admin
    */
   title: 'PS-admin',
 
