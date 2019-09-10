@@ -69,15 +69,14 @@ export default {
   left: 0;
   right: 0;
   background: $navBarBg;
-  // box-shadow: 0 1px 4px rgba(0,21,41,.08);
-  padding-left: 200px;
+  padding-left: $sideBarWidth;
   .breadcrumb-container {
     float: left;
   }
   .logo-wrapper{
-    width: 200px;
+    width: $sideBarWidth;
     height: 50px;
-    color: #fff;
+    color: $logoColor;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -134,6 +133,7 @@ export default {
           right: -20px;
           top: 25px;
           font-size: 12px;
+          color: #fff;
         }
       }
     }
