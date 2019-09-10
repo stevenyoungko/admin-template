@@ -100,7 +100,7 @@ export default {
             flat(menu[key].children)
           } else if (menu[key].path && menu[key].name) {
             newMenu.push(menu[key])
-          } else if (menu[key].meta && menu[key].meta.icon === 'link') {
+          } else if (menu[key].meta && menu[key].meta.icon !== 'link') {
             console.error(`請輸入 ${menu[key].path || menu[key].name} rotuerName routerPath \n 如不需要請設定meta.icon === 'link'`)
           }
         })

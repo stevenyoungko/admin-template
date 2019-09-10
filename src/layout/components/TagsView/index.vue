@@ -205,13 +205,14 @@ export default {
       position: relative;
       cursor: pointer;
       height: 33px;
+      min-width: 120px;
       line-height: 33px;
       border-top: 1px solid #d9d9d9;
       border-right: 1px solid #d9d9d9;
       border-radius: 4px 4px 0 0;
       color: #495060;
       background: #f5f5f5;
-      padding: 0 12px;
+      padding: 0 16px 0 12px;
       font-size: 12px;
       &:first-of-type {
         margin-left: 12px;
@@ -264,21 +265,19 @@ export default {
 .tags-view-wrapper {
   .tags-view-item {
     .el-icon-close {
-      width: 16px;
-      height: 16px;
-      vertical-align: 2px;
+      position: absolute;
+      top: 9.5px;
+      right: 2px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      text-align: center;
-      transition: all .3s cubic-bezier(.645, .045, .355, 1);
-      transform-origin: 100% 50%;
+      // transition: all .3s cubic-bezier(.645, .045, .355, 1);
+      // transform-origin: 100% 50%;
       &:before {
-        transform: scale(.6);
         display: inline-block;
-        vertical-align: -3px;
       }
       &:hover {
-        background-color: #b4bccc;
-        color: #fff;
+        color: #000;
       }
     }
   }
