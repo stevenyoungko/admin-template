@@ -63,7 +63,7 @@ export default {
     float: left;
   }
   .logo-wrapper{
-    width: $sideBarWidth;
+    min-width: $sideBarWidth;
     height: 50px;
     color: $logoColor;
     display: flex;
