@@ -18,10 +18,12 @@ import Layout from '@/layout'
  * name:'router-name'             the name is used on side-bar, side-bar下面的quickMenu, tagViews (must set and unique!!!)
  * meta : {
     roles: ['admin','editor']    control the page roles (you can set multiple roles)
-    title: 'title'               the name show in sidebar and breadcrumb (recommend set)
+    title: 'title'               the name show in sidebar, breadcrumb, flatMenu, tagViews (must set)
     icon: 'svg-name'             the icon show in the sidebar
-    breadcrumb: false            if set false, the item will hidden in breadcrumb(default is true)
-    noCache: true //如果设置为true，则不会被 <keep-alive> 缓存(默认 false)
+    breadcrumb: false,           if set false, the item will hidden in breadcrumb(default is true)
+    noTagViews: true,            如果設置為true，不會生成tagViews (默認 false)
+    noCache: true,               如果设置为true，则不会被 <keep-alive> 缓存(默认 false)
+    affix: true                  如果設置為true，則會釘選在tagViews上 (默認 false)
   }
  */
 
@@ -66,7 +68,7 @@ export const constantRoutes = [
         path: 'table',
         name: 'Table',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: 'Table', icon: 'table', noTagViews: true }
       },
       {
         path: 'tree',

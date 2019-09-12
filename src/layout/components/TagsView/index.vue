@@ -13,7 +13,7 @@
         @contextmenu.prevent.native="openMenu(tag, $event)"
       >
         {{ tag.title }}
-        <span v-if="!tag.meta.affix" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
+        <span v-if="!tag.meta.affix" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)"></span>
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
@@ -49,7 +49,7 @@ export default {
     }
   },
   watch: {
-    $route() {
+    $route(val, oldval) {
       this.addTags()
       this.moveToCurrentTag()
     },
@@ -100,8 +100,8 @@ export default {
       }
     },
     addTags() {
-      const { name } = this.$route
-      if (name) {
+      const { name, meta } = this.$route
+      if (name && meta && !meta.noTagViews) {
         this.$store.dispatch('tagsView/addView', this.$route)
       }
       return false

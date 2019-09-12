@@ -44,6 +44,7 @@ import { mapGetters } from 'vuex'
 import Hamburger from '@/components/core/Hamburger'
 import SidebarItem from './SidebarItem'
 import variables from '@/styles/variables.scss'
+import { isExternal } from '@/utils/validate'
 
 export default {
   components: {
@@ -98,10 +99,10 @@ export default {
           }
           if (menu[key].children) {
             flat(menu[key].children)
-          } else if (menu[key].path && menu[key].name) {
+          } else if (menu[key].path && menu[key].name && !isExternal(menu[key].path)) {
             newMenu.push(menu[key])
-          } else if (menu[key].meta && menu[key].meta.icon !== 'link') {
-            console.error(`請輸入 ${menu[key].path || menu[key].name} rotuerName routerPath \n 如不需要請設定meta.icon === 'link'`)
+          } else if (!isExternal(menu[key].path) || !menu[key].path || !menu[key].meta || !menu[key].meta.title) {
+            console.error(`${menu[key].path} 請輸入 name, meta.title`)
           }
         })
       }

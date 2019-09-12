@@ -1,13 +1,13 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div>
     <navbar />
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div class="fixed-header tab-wrapper">
         <tags-view />
         <div class="bread-wrapper">
-          <i class="el-icon-caret-right" />
+          <i class="el-icon-caret-right"></i>
           <breadcrumb class="breadcrumb-container" />
         </div>
       </div>
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-// import RightPanel from '@/components/core/RightPanel'
 import Breadcrumb from '@/components/core/Breadcrumb'
 import { AppMain, Navbar, Sidebar, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
