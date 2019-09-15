@@ -1,32 +1,33 @@
-# vue-admin-template
+# ps-admin
 
-English | [简体中文](./README-zh.md)
-
+> Paradise-Soft 後台初始化項目
 > A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
 
-**Live demo:** http://panjiachen.github.io/vue-admin-template
+## Introduction
 
-
-**The current version is `v4.0+` build on `vue-cli`. If you want to use the old version , you can switch branch to [tag/3.11.0](https://github.com/PanJiaChen/vue-admin-template/tree/tag/3.11.0), it does not rely on `vue-cli`**
+> src/settings.js      一些初始化建置設定檔
+> src/permission.js    以beforeEach 做登入驗證相關檔案
+> src/router/index.js  核心區塊，緩存/麵包屑/標籤都在此設置
+> src/utils/request    axios與interceptor，Api errorHandler 請在這處理
 
 ## Build Setup
 
 
 ```bash
 # clone the project
-git clone https://github.com/PanJiaChen/vue-admin-template.git
+git clone http://gitlab.paradise-soft.com.tw/frontend/ps-admin.git
 
 # enter the project directory
-cd vue-admin-template
+cd ps-admin
 
 # install dependency
 npm install
 
 # develop
-npm run dev
+npm run dev || npm run serve
 ```
 
-This will automatically open http://localhost:9528
+This will automatically open http://localhost:9487
 
 ## Build
 
@@ -35,7 +36,7 @@ This will automatically open http://localhost:9528
 npm run build:stage
 
 # build for production environment
-npm run build:prod
+npm run build
 ```
 
 ## Advanced
@@ -60,15 +61,11 @@ Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/gui
 
 If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
 
-For `typescript` version, you can use [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (Credits: [@Armour](https://github.com/Armour))
-
 ## Related Project
 
 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
 
 [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
-
-[vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template)
 
 ## Browsers support
 
@@ -78,8 +75,3 @@ Modern browsers and Internet Explorer 10+.
 | --------- | --------- | --------- | --------- |
 | IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
 
-## License
-
-[MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
-
-Copyright (c) 2017-present PanJiaChen
