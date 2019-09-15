@@ -22,7 +22,7 @@ import Layout from '@/layout'
     title: 'title'               設置該路由在 SideBar,breadcrumb 和 tagViews 中展示的名字 (必填)
     icon: 'svg-name'             SideBar Icon 的 Svg樣式
     breadcrumb: false,           如果設置為false，則不會在breadcrumb麵包屑中顯示
-    noTagViews: true,            如果設置為true，不會生成tagViews (默認 false)
+    noTagViews: true,            如果設置為true，不會生成tagViews 也不會被 <keep-alive> 緩存 (默認 false) ， 該設置大於noCache
     noCache: true,               如果設置為true，則不會被 <keep-alive> 緩存(默認 false) <keep-alive>組件在 @/layout/components/AppMain.vue
     affix: true                  如果設置為true，則會釘選在tagViews上 (默認 false)
   }
@@ -67,7 +67,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'table',
-        name: 'Table',
+        name: 'Table333',
         component: () => import('@/views/table/index'),
         meta: { title: 'Table', icon: 'table', noTagViews: true }
       },
