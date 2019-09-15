@@ -3,7 +3,7 @@ module.exports = {
    * @type {Number}
    * @description 變更開發port 這邊權重是最小的 process.env.port > process.env.npm_config_port > settings.port
    */
-  port: 9524,
+  port: 9487,
   /**
    * @type {String}
    * @description 變更document.title 預設 PS-admin
