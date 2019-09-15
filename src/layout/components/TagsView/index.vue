@@ -212,7 +212,7 @@ export default {
       border-radius: 4px 4px 0 0;
       color: #495060;
       background: #f5f5f5;
-      padding: 0 16px 0 12px;
+      padding: 0 18px 0 12px;
       font-size: 12px;
       &:first-of-type {
         margin-left: 12px;
@@ -267,7 +267,7 @@ export default {
     .el-icon-close {
       position: absolute;
       top: 9.5px;
-      right: 2px;
+      right: 4px;
       width: 12px;
       height: 12px;
       border-radius: 50%;
