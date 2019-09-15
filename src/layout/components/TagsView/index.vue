@@ -204,9 +204,9 @@ export default {
       display: inline-block;
       position: relative;
       cursor: pointer;
-      height: 33px;
+      height: 32px;
       min-width: 120px;
-      line-height: 33px;
+      line-height: 32px;
       border-top: 1px solid #d9d9d9;
       border-right: 1px solid #d9d9d9;
       border-radius: 4px 4px 0 0;
@@ -221,7 +221,7 @@ export default {
       &:before{
         content: '';
         position: absolute;
-        bottom: 1px;
+        bottom: 0px;
         left: 0;
         right: 0;
         height: 1px;
