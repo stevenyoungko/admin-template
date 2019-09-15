@@ -1,14 +1,19 @@
 # ps-admin
 
-> Paradise-Soft 後台初始化項目
+> Paradise-Soft 後台初始化項目  
+
 > A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
 
 ## Introduction
 
-> src/settings.js      一些初始化建置設定檔
-> src/permission.js    以beforeEach 做登入驗證相關檔案
-> src/router/index.js  核心區塊，緩存/麵包屑/標籤都在此設置
-> src/utils/request    axios與interceptor，Api errorHandler 請在這處理
+> src/settings.js      一些初始化建置設定檔  
+
+> src/permission.js    以beforeEach 做登入驗證相關檔案  
+
+> src/router/index.js  核心區塊，緩存/麵包屑/標籤都在此設置  
+
+> src/utils/request    axios與interceptor，Api errorHandler 請在這處理  
+
 
 ## Build Setup
 
