@@ -33,11 +33,23 @@ This will automatically open http://localhost:9487
 ## Build
 
 ```bash
-# build for test environment
-npm run build:stage
-
 # build for production environment
 npm run build
+```
+
+## Deploy
+
+> pm2 config => ecosystem.config.js
+
+```bash
+# DevServer Move Package.json, server(dir), dist(dir), .env.development, ecosystem.config.js
+npm run initServer  
+npm run start:pm2 啟動  
+npm run restart:pm2 重啟  
+npm run stop:pm2 停止  
+# ProductionServer Move Package.json, server(dir), dist(dir), .env.production
+npm run initServer  
+npm run start
 ```
 
 ## Advanced
