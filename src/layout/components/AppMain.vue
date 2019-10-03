@@ -48,7 +48,6 @@ export default {
   background-color: #fff;
   padding: 0;
   overflow-x: hidden;
-  overflow-x: auto;
   @include scrollBar;
 }
 
