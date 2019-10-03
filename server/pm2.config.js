@@ -1,7 +1,12 @@
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '.env.development') })
+const appName = process.env.APP_NAME
+const port = process.env.PORT || 8080
+
 module.exports = {
   apps: [{
-    name: 'ps-admin:8080',
-    script: './server/index.js',
+    name: `${appName}:${port}`,
+    script: 'server/index.js',
 
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
     instances: 1,
