@@ -1,3 +1,31 @@
+$Primary: #1991eb;
+$Primary-hover: #5eb2f1;
+$Primary-active: #1165a4;
+$Primary-light10: #e8f4fd;
+$Success: #71d900;
+$Success-hover: #9be44d;
+$Success-active: #4e9700;
+$Success-light10: #f0fbe5;
+$Warning: #ffa600;
+$Warning-hover: #ffc04d;
+$Warning-active: #b27300;
+$Warning-light10: #fff6e5;
+$Danger: #ff3535;
+$Danger-hover: #ff7171;
+$Danger-active: #b22424;
+$Danger-light10: #fff0f0;
+$Intermediate: #c9d1da;
+$Intermediate-hover: #d9dee5;
+$Intermediate-active: #8c9198;
+$Intermediate-light10: #e5e5e5;
+$black: #000000;
+$white: #ffffff;
+$Light-80: #f4f5f7;
+$Light-60: #e9ecf0;
+$Light-40: #dee3e8;
+$Black-40: #aeb1b4;
+$Black-60: #7e7e7f;
+
 @mixin clearfix {
   &:after {
     content: "";
@@ -25,4 +53,167 @@
   position: relative;
   width: 100%;
   height: 100%;
+}
+
+@mixin boxshadow {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
+}
+
+// button-base
+@mixin button-base {
+  background-color: $Primary;
+  color: $white;
+  border-color: $Primary;
+
+  &:hover {
+    background-color: $Primary-hover;
+    color: $white;
+    border-color: $Primary-hover;
+  }
+
+  &.active {
+    background-color: $Primary-active;
+    color: $white;
+    border-color: $Primary-active;
+  }
+
+  &.disable {
+    background-color: $Intermediate;
+    color: $white;
+    border-color: $Intermediate;
+  }
+}
+
+@mixin button-outline {
+  background-color: $white;
+  color: $black;
+  border-color: $Intermediate;
+
+  &:hover {
+    background-color: $white;
+    color: $Primary;
+    border-color: $Primary;
+  }
+
+  &.active {
+    background-color: $Primary;
+    color: $white;
+    border-color: $Primary;
+  }
+
+  &.disable {
+    background-color: $white;
+    color: $Intermediate;
+    border-color: $Intermediate;
+  }
+}
+
+@mixin button-square {
+  background-color: $white;
+  color: $black;
+  border-color: $Intermediate;
+
+  &:hover {
+    background-color: $white;
+    color: $Primary;
+    border-color: $Primary;
+  }
+
+  &.active {
+    background-color: $Primary;
+    color: $white;
+    border-color: $Primary;
+  }
+
+  &.disable {
+    background-color: $white;
+    color: $Intermediate;
+    border-color: $Intermediate;
+  }
+}
+
+//input
+
+@mixin input-base {
+
+  input {
+    background-color: $white;
+    color: $black;
+    border-color: $Intermediate;
+
+    &:hover {
+      background-color: $white;
+      color: $Primary;
+      border-color: $Primary;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $white;
+      color: $black;
+      border-color: $Primary;
+    }
+
+    &.active {
+      background-color: $white;
+      color: $Primary;
+      border-color: $Primary;
+    }
+
+    &.disable {
+      background-color: $white;
+      color: $Intermediate;
+      border-color: $Intermediate;
+    }
+  }
+}
+
+//other
+@mixin menu-item {
+  background-color: $white;
+  color: $black;
+
+  &:hover {
+    background-color: $Light-80;
+    color: $Primary;
+  }
+
+  &.active {
+    background-color: $Light-80;
+    color: $Primary;
+  }
+}
+
+@mixin tabs-item {
+  background-color: $Light-80;
+  color: $black;
+
+  &:hover {
+    background-color: $white;
+    color: $black;
+  }
+
+  &.active {
+    background-color: $white;
+    color: $Primary;
+  }
+}
+
+@mixin tags-base {
+  background-color: $Primary-light10;
+  color: $Primary;
+  border-color: $Primary;
+
+  &:hover {
+    background-color: $Primary-light10;
+    color: $Primary;
+    border-color: $Primary;
+  }
+
+  &.disable {
+    background-color: $white;
+    color: $Intermediate;
+    border-color: $Intermediate;
+  }
+
 }

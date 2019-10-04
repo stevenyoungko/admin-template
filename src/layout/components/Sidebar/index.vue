@@ -117,11 +117,11 @@ export default {
   .quick-side-bar {
     position: absolute;
     left: 0;
-    bottom: 50px;
+    bottom: 48px;
     display: flex;
     align-items: center;
     width: 100%;
-    height: 50px;
+    height: 48px;
     background-color: #fff;
     border-top: 1px solid #d9d9d9;
     .quick-search {
@@ -130,9 +130,9 @@ export default {
     }
     .hamburger-container {
       position: relative;
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
       cursor: pointer;
       transition: background .3s;
       -webkit-tap-highlight-color:transparent;

@@ -1,12 +1,19 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
+  <div
+    v-loading.fullscreen.lock="globalLoading"
+    :class="classObj"
+    class="app-wrapper"
+    element-loading-text="加载中"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.7)"
+  >
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div>
     <navbar />
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div class="fixed-header tab-wrapper">
         <tags-view />
-        <div v-if="!showBreadcrumb" class="bread-wrapper">
+        <div v-if="!noBreadcrumb" class="bread-wrapper">
           <i class="el-icon-caret-right"></i>
           <breadcrumb class="breadcrumb-container" />
         </div>
@@ -41,7 +48,8 @@ export default {
       device: state => state.app.device,
       showSettings: state => state.settings.showSettings,
       fixedHeader: state => state.settings.fixedHeader,
-      showBreadcrumb: state => state.settings.showBreadcrumb
+      noBreadcrumb: state => state.settings.noBreadcrumb,
+      globalLoading: state => state.app.globalLoading
     }),
     classObj() {
       return {
@@ -49,7 +57,7 @@ export default {
         openSidebar: this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
         mobile: this.device === 'mobile',
-        showBreadcrumb: this.showBreadcrumb
+        noBreadcrumb: this.noBreadcrumb
       }
     }
   },
@@ -73,7 +81,7 @@ export default {
     padding-top: 50px;
     .main-container {
       position: relative;
-      padding: 70px 4px 0 4px;
+      padding: 68px 4px 0 4px;
       background-color: #d9d9d9;
       min-height: 100%;
       transition: margin-left .28s;
@@ -84,8 +92,7 @@ export default {
       top: 0;
     }
     .tab-wrapper{
-      background-color: #fff;
-      height: 70px;
+      height: 68px;
       &:before{
         content: '';
         position: absolute;
@@ -100,6 +107,7 @@ export default {
         align-items: center;
         height: calc(70px - 44px);
         padding-left: 4px;
+        background-color: #fff;
         .el-icon-caret-right{
           color: #666;
         }
@@ -132,9 +140,9 @@ export default {
   .hideSidebar .fixed-header {
     width: calc(100% - 62px)
   }
-  .showBreadcrumb {
+  .noBreadcrumb {
     .main-container{
-      padding-top: 42px;
+      padding-top: 41px;
     }
     .tab-wrapper {
       height: 44px;
