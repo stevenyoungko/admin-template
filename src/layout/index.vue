@@ -6,7 +6,7 @@
     <div class="main-container">
       <div class="fixed-header tab-wrapper">
         <tags-view />
-        <div class="bread-wrapper">
+        <div v-if="!showBreadcrumb" class="bread-wrapper">
           <i class="el-icon-caret-right"></i>
           <breadcrumb class="breadcrumb-container" />
         </div>
@@ -20,21 +20,19 @@
 </template>
 
 <script>
-import Breadcrumb from '@/components/core/Breadcrumb'
 import { AppMain, Navbar, Sidebar, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
-
 export default {
   name: 'Layout',
   components: {
     AppMain,
+    Breadcrumb: () => import('@/components/core/Breadcrumb'),
     Navbar,
     RightPanel: () => import('@/components/core/RightPanel'),
     Settings: () => import('./components/Settings/index'),
     Sidebar,
-    TagsView,
-    Breadcrumb
+    TagsView
   },
   mixins: [ResizeMixin],
   computed: {
@@ -42,14 +40,16 @@ export default {
       sidebar: state => state.app.sidebar,
       device: state => state.app.device,
       showSettings: state => state.settings.showSettings,
-      fixedHeader: state => state.settings.fixedHeader
+      fixedHeader: state => state.settings.fixedHeader,
+      showBreadcrumb: state => state.settings.showBreadcrumb
     }),
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
         openSidebar: this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
+        mobile: this.device === 'mobile',
+        showBreadcrumb: this.showBreadcrumb
       }
     }
   },
@@ -71,6 +71,14 @@ export default {
     height: 100%;
     width: 100%;
     padding-top: 50px;
+    .main-container {
+      position: relative;
+      padding: 70px 4px 0 4px;
+      background-color: #d9d9d9;
+      min-height: 100%;
+      transition: margin-left .28s;
+      margin-left: $sideBarWidth;
+    }
     &.mobile.openSidebar {
       position: fixed;
       top: 0;
@@ -124,7 +132,17 @@ export default {
   .hideSidebar .fixed-header {
     width: calc(100% - 62px)
   }
-
+  .showBreadcrumb {
+    .main-container{
+      padding-top: 42px;
+    }
+    .tab-wrapper {
+      height: 44px;
+    }
+    .fixed-header{
+      border-bottom: none;
+    }
+  }
   .mobile .fixed-header {
     width: 100%;
   }

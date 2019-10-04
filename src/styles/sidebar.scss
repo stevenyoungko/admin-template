@@ -1,14 +1,5 @@
 #app {
 
-  .main-container {
-    padding: 70px 4px 0 4px;
-    background-color: #d9d9d9;
-    min-height: 100%;
-    transition: margin-left .28s;
-    margin-left: $sideBarWidth;
-    position: relative;
-  }
-
   .sidebar-container {
     transition: width 0.28s;
     width: $sideBarWidth !important;

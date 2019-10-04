@@ -1,12 +1,13 @@
 import variables from '@/styles/element-variables.scss'
 import defaultSettings from '@/settings'
 
-const { showSettings, logoName } = defaultSettings
+const { showSettings, logoName, showBreadcrumb } = defaultSettings
 
 const state = {
   theme: variables.theme,
   showSettings: showSettings,
-  logoName: logoName
+  logoName: logoName,
+  showBreadcrumb: showBreadcrumb
 }
 
 const mutations = {

@@ -15,6 +15,11 @@ module.exports = {
    */
   logoName: '♞ Drive Thru',
   /**
+   * @type {boolean}
+   * @description 設定是否使用 麵包屑功能
+   */
+  showBreadcrumb: false,
+  /**
    * @type {boolean} true | false
    * @description Whether show the settings right-panel
    */
