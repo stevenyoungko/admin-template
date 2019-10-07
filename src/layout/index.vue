@@ -81,8 +81,8 @@ export default {
     padding-top: 50px;
     .main-container {
       position: relative;
-      padding: 68px 4px 0 4px;
-      background-color: #d9d9d9;
+      padding: 64px 4px 0 4px;
+      background-color: $Intermediate;
       min-height: 100%;
       transition: margin-left .28s;
       margin-left: $sideBarWidth;
@@ -92,7 +92,7 @@ export default {
       top: 0;
     }
     .tab-wrapper{
-      height: 68px;
+      height: 64px;
       &:before{
         content: '';
         position: absolute;
@@ -100,7 +100,7 @@ export default {
         left: 0;
         right: 0;
         height: 4px;
-        background-color: #d9d9d9;
+        background-color: $Intermediate;
       }
       .bread-wrapper{
         display: flex;

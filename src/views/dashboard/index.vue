@@ -20,10 +20,13 @@
       <el-row type="flex" justify="end">
         <el-col>
           <el-pagination
-            :page-size="20"
-            :pager-count="11"
-            layout="prev, pager, next"
-            :total="1000"
+            :current-page="pager.page"
+            :page-sizes="[25, 50]"
+            :page-size="pager.pageSize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="pager.total"
+            @size-change="pagerEvent($event, 'sizeChange')"
+            @current-change="pagerEvent($event,'pageChange')"
           />
         </el-col>
       </el-row>
@@ -169,7 +172,12 @@ export default {
           width: '180',
           label: '地址'
         }
-      ]
+      ],
+      pager: {
+        page: 1,
+        pageSize: 25,
+        total: 100
+      }
     }
   },
   computed: {
@@ -178,7 +186,17 @@ export default {
     ])
   },
   methods: {
-
+    pagerEvent(e, type) {
+      if (type === 'pageChange') {
+        this.pager.page = e
+        return
+      }
+      if (type === 'sizeChange') {
+        this.pager.page = 1
+        this.pager.pageSize = e
+        return
+      }
+    }
   }
 }
 </script>

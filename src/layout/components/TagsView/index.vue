@@ -12,6 +12,7 @@
         @click.middle.native="closeSelectedTag(tag)"
         @contextmenu.prevent.native="openMenu(tag, $event)"
       >
+        <svg-icon v-if="tag.meta && tag.meta.icon" :icon-class="tag.meta.icon" style="margin-right: 4px;" />
         {{ tag.title }}
         <span v-if="!tag.meta.affix" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)"></span>
       </router-link>
@@ -28,9 +29,9 @@
 <script>
 import ScrollPane from './ScrollPane'
 import path from 'path'
-
+import SvgIcon from '@/components/core/SvgIcon'
 export default {
-  components: { ScrollPane },
+  components: { ScrollPane, SvgIcon },
   data() {
     return {
       visible: false,
@@ -101,6 +102,7 @@ export default {
     },
     addTags() {
       const { name, meta } = this.$route
+      console.log(this.$route, 'route?')
       if (name && meta && !meta.noTagViews) {
         this.$store.dispatch('tagsView/addView', this.$route)
       }
@@ -193,9 +195,9 @@ export default {
 
 <style lang="scss" scoped>
 .tags-view-container {
-  height: 37px;
+  height: 33px;
   width: 100%;
-  padding-top: 4px;
+  // padding-top: 4px;
   // border-bottom: 1px solid #d8dce5;
   // box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
   .tags-view-wrapper {
@@ -203,9 +205,9 @@ export default {
       display: inline-block;
       position: relative;
       cursor: pointer;
-      height: 36px;
+      height: 33px;
       min-width: 120px;
-      line-height: 36px;
+      line-height: 33px;
       border-top: 1px solid #d9d9d9;
       border-right: 1px solid #d9d9d9;
       border-radius: 4px 4px 0 0;

@@ -36,7 +36,7 @@ export default {
   methods: {
     handle_tableResize: _debounce(function() {
       this.tableHeight = this.$refs.table.clientHeight
-      this.$emit('tableHeight', this.tableHeight)
+      this.$emit('tableHeight', this.tableHeight - 8)
     }, 250)
   }
 }
@@ -51,6 +51,7 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  padding-bottom: 8px;
   .ps-query{
     padding: 8px;
     position: relative;

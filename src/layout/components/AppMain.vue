@@ -42,7 +42,7 @@ export default {
 <style lang="scss" scoped>
 .app-main {
   /* 50= navbar  50  */
-  height: calc(100vh - 120px);
+  height: calc(100vh - 116px);
   width: 100%;
   position: relative;
   background-color: #fff;

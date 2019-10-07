@@ -125,8 +125,22 @@ export default {
     background-color: #fff;
     border-top: 1px solid #d9d9d9;
     .quick-search {
+      & >>> .el-input--mini {
+        .el-input__inner {
+          height: 24px;
+          line-height: 24px;
+        }
+       .el-input__icon {
+          line-height: 24px;
+          height: 24px;
+        }
+      }
+      & >>> .el-input--suffix .el-input__inner {
+        padding-left: 8px;
+      }
       flex: 1;
       padding: 0 8px;
+      font-size: 12px;
     }
     .hamburger-container {
       position: relative;
