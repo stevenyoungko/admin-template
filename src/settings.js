@@ -34,4 +34,4 @@ module.exports = {
    * @description 設定devServe 是否使用Mock Server Data | ps: 設定過要重新跑一次 yarn serve
    */
   devUseMock: true
-}
+};

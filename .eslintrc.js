@@ -9,8 +9,19 @@ module.exports = {
     node: true,
     es6: true,
   },
-  extends: ['plugin:vue/recommended', 'eslint:recommended', "airbnb-vue"],
+  extends: ["plugin:vue/recommended", "airbnb-vue"],
+  // extends: ["plugin:vue/recommended", "eslint:recommended", "airbnb-vue"],
   rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "none",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": true,
+        "parser": "flow"
+      }
+    ],
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
     "import/extensions": "off",
@@ -20,7 +31,7 @@ module.exports = {
     "no-param-reassign": ["error", {
       "props": false
     }]
-  },
+  }
   // add your custom rules here
   //it is base on https://github.com/vuejs/eslint-config-vue
   // rules: {

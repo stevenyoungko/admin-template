@@ -39,12 +39,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
 // import Logo from './Logo'
-import Hamburger from '@/components/core/Hamburger'
-import SidebarItem from './SidebarItem'
-import variables from '@/styles/variables.scss'
-import { isExternal } from '@/utils/validate'
+import Hamburger from '@/components/core/Hamburger';
+import SidebarItem from './SidebarItem';
+import variables from '@/styles/variables.scss';
+import { isExternal } from '@/utils/validate';
 
 export default {
   components: {
@@ -55,62 +55,62 @@ export default {
   data() {
     return {
       searchBarValue: ''
-    }
+    };
   },
   computed: {
     ...mapGetters([
       'sidebar'
     ]),
     routes() {
-      return this.$router.options.routes
+      return this.$router.options.routes;
     },
     activeMenu() {
-      const route = this.$route
-      const { meta, path } = route
+      const route = this.$route;
+      const { meta, path } = route;
       // if set path, the sidebar will highlight the path you set
       if (meta.activeMenu) {
-        return meta.activeMenu
+        return meta.activeMenu;
       }
-      return path
+      return path;
     },
     showLogo() {
-      return this.$store.state.settings.sidebarLogo
+      return this.$store.state.settings.sidebarLogo;
     },
     variables() {
-      return variables
+      return variables;
     },
     isCollapse() {
-      return !this.sidebar.opened
+      return !this.sidebar.opened;
     },
     quickMenu() {
-      return this.flatMenu(this.routes)
+      return this.flatMenu(this.routes);
     }
   },
   methods: {
     toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
+      this.$store.dispatch('app/toggleSideBar');
     },
     flatMenu(menu) {
-      const newMenu = []
+      const newMenu = [];
       const flat = (menu) => {
         Object.keys(menu).forEach((key) => {
           if (menu[key].hidden === true) {
-            return
+            return;
           }
           if (menu[key].children) {
-            flat(menu[key].children)
+            flat(menu[key].children);
           } else if (menu[key].path && menu[key].name && !isExternal(menu[key].path)) {
-            newMenu.push(menu[key])
+            newMenu.push(menu[key]);
           } else if (!isExternal(menu[key].path) || !menu[key].path || !menu[key].meta || !menu[key].meta.title) {
-            console.error(`${menu[key].path} 請輸入 name, meta.title`)
+            console.error(`${menu[key].path} 請輸入 name, meta.title`);
           }
-        })
-      }
-      flat(menu)
-      return newMenu
+        });
+      };
+      flat(menu);
+      return newMenu;
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .side-bar{

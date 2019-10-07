@@ -10,7 +10,6 @@
       class="filter-tree"
       default-expand-all
     />
-
   </div>
 </template>
 
@@ -59,20 +58,20 @@ export default {
         children: 'children',
         label: 'label'
       }
-    }
+    };
   },
   watch: {
     filterText(val) {
-      this.$refs.tree2.filter(val)
+      this.$refs.tree2.filter(val);
     }
   },
 
   methods: {
     filterNode(value, data) {
-      if (!value) return true
-      return data.label.indexOf(value) !== -1
+      if (!value) return true;
+      return data.label.indexOf(value) !== -1;
     }
   }
-}
+};
 </script>
 

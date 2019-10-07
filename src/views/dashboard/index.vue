@@ -26,7 +26,7 @@
             layout="total, sizes, prev, pager, next, jumper"
             :total="pager.total"
             @size-change="pagerEvent($event, 'sizeChange')"
-            @current-change="pagerEvent($event,'pageChange')"
+            @current-change="pagerEvent($event, 'pageChange')"
           />
         </el-col>
       </el-row>
@@ -45,165 +45,177 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import TableContainer from '@/components/container/TableContainer'
+import { mapGetters } from 'vuex';
+import TableContainer from '@/components/container/TableContainer';
+
 export default {
   name: 'Dashboard',
   components: {
-    TableContainer
+    TableContainer,
   },
   data() {
     return {
       tableHeight: 0,
       formInline: {
         user: '',
-        region: ''
+        region: '',
       },
       rules: {
-        user: [
-          { required: true, message: '请输入user', trigger: 'blur' }
-        ],
-        region: [
-          { required: true, message: '请输入地区', trigger: 'blur' }
-        ]
+        user: [{ required: true, message: '请输入user', trigger: 'blur' }],
+        region: [{ required: true, message: '请输入地区', trigger: 'blur' }],
       },
       tableData: [
         {
           date: '2016-05-03',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-02',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-04',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-01',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-08',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-06',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-07',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: '上海市普陀区金沙江路 1518 弄',
         },
         {
           date: '2016-05-03',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-02',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-04',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-01',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-08',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-06',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-07',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: '上海市普陀区金沙江路 1518 弄',
         },
         {
           date: '2016-05-03',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-02',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-04',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-01',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-08',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-06',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
           date: '2016-05-07',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
       ],
       columns: [
         {
           prop: 'date',
           width: '180',
-          label: '日期'
+          label: '日期',
         },
         {
           prop: 'name',
           width: '180',
-          label: '姓名'
+          label: '姓名',
         },
         {
           prop: 'address',
           width: '180',
-          label: '地址'
-        }
+          label: '地址',
+        },
       ],
       pager: {
         page: 1,
         pageSize: 25,
-        total: 100
-      }
-    }
+        total: 100,
+      },
+    };
   },
   computed: {
-    ...mapGetters([
-      'name'
-    ])
+    ...mapGetters(['name']),
   },
   methods: {
     pagerEvent(e, type) {
       if (type === 'pageChange') {
-        this.pager.page = e
-        return
+        this.pager.page = e;
+        return;
       }
       if (type === 'sizeChange') {
-        this.pager.page = 1
-        this.pager.pageSize = e
-        return
+        this.pager.page = 1;
+        this.pager.pageSize = e;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .dashboard {
-  .filter-item{
+  .filter-item {
     background-color: #f5f5f5;
     padding: 0 8px;
     margin-bottom: 0;

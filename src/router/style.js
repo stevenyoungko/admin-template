@@ -1,4 +1,5 @@
-import Layout from '@/layout'
+import Layout from '@/layout';
+
 export default {
   path: '/style',
   component: Layout,
@@ -13,4 +14,4 @@ export default {
       meta: { title: 'Forms', icon: 'form' }
     }
   ]
-}
+};

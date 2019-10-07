@@ -2,44 +2,45 @@
   <div class="ps-container">
     <div class="ps-query">
       <div class="query-item-wrap">
-        <slot name="query-group"></slot>
+        <slot name="query-group" />
       </div>
       <div class="query-action">
-        <el-button style="margin-bottom: 8px;" plain size="mini">{{ '收起' }}</el-button>
-        <slot name="query-action"></slot>
+        <el-button style="margin-bottom: 8px;" plain size="mini">收起</el-button>
+        <slot name="query-action" />
       </div>
     </div>
     <div class="ps-controller">
-      <slot name="controller"></slot>
+      <slot name="controller" />
     </div>
     <div ref="table" class="ps-content">
-      <slot name="content"></slot>
+      <slot name="content" />
     </div>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-import _debounce from 'lodash.debounce'
+import _debounce from 'lodash.debounce';
+
 export default {
   data() {
     return {
       tableHeight: 0
-    }
+    };
   },
   mounted() {
-    window.addEventListener('resize', this.handle_tableResize())
+    window.addEventListener('resize', this.handle_tableResize());
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.handle_tableResize)
+    window.removeEventListener('resize', this.handle_tableResize);
   },
   methods: {
     handle_tableResize: _debounce(function() {
-      this.tableHeight = this.$refs.table.clientHeight
-      this.$emit('tableHeight', this.tableHeight - 8)
+      this.tableHeight = this.$refs.table.clientHeight;
+      this.$emit('tableHeight', this.tableHeight - 8);
     }, 250)
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
