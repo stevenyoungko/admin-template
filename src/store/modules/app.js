@@ -9,50 +9,50 @@ const state = {
   },
   globalLoading: false,
   device: 'desktop'
-};
+}
 
 const mutations = {
   TOGGLE_SIDEBAR: state => {
-    state.sidebar.opened = !state.sidebar.opened;
-    state.sidebar.withoutAnimation = false;
+    state.sidebar.opened = !state.sidebar.opened
+    state.sidebar.withoutAnimation = false
     if (state.sidebar.opened) {
-      localStorage.setItem('sidebarStatus', 1);
+      localStorage.setItem('sidebarStatus', 1)
     } else {
-      localStorage.setItem('sidebarStatus', 0);
+      localStorage.setItem('sidebarStatus', 0)
     }
   },
   CLOSE_SIDEBAR: (state, withoutAnimation) => {
-    localStorage.setItem('sidebarStatus', 0);
-    state.sidebar.opened = false;
-    state.sidebar.withoutAnimation = withoutAnimation;
+    localStorage.setItem('sidebarStatus', 0)
+    state.sidebar.opened = false
+    state.sidebar.withoutAnimation = withoutAnimation
   },
   TOGGLE_DEVICE: (state, device) => {
-    state.device = device;
+    state.device = device
   },
   SET_GLOBAL_LOADING: (state, show) => {
-    state.globalLoading = show;
+    state.globalLoading = show
   }
-};
+}
 
 const actions = {
   toggleSideBar({ commit }) {
-    commit('TOGGLE_SIDEBAR');
+    commit('TOGGLE_SIDEBAR')
   },
   closeSideBar({ commit }, { withoutAnimation }) {
-    commit('CLOSE_SIDEBAR', withoutAnimation);
+    commit('CLOSE_SIDEBAR', withoutAnimation)
   },
   toggleDevice({ commit }, device) {
-    commit('TOGGLE_DEVICE', device);
+    commit('TOGGLE_DEVICE', device)
   },
   setGlobalLoading({ commit }, show) {
-    console.log(show);
-    commit('SET_GLOBAL_LOADING', show);
+    console.log(show)
+    commit('SET_GLOBAL_LOADING', show)
   }
-};
+}
 
 export default {
   namespaced: true,
   state,
   mutations,
   actions
-};
+}

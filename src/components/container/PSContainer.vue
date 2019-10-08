@@ -2,48 +2,41 @@
   <div class="ps-container">
     <div class="ps-query">
       <div class="query-item-wrap">
-        <slot name="query-group" />
+        <slot name="query-group"></slot>
       </div>
       <div class="query-action">
-        <el-button style="margin-bottom: 8px;" plain size="mini">收起</el-button>
-        <slot name="query-action" />
+        <slot name="query-action"></slot>
       </div>
     </div>
-    <div class="ps-controller">
-      <slot name="controller" />
+    <div v-if="this.$slots.controller" class="ps-controller">
+      <slot name="controller"></slot>
     </div>
     <div ref="table" class="ps-content">
-      <slot name="content" />
+      <slot name="content"></slot>
     </div>
-    <slot />
+    <div class="ps-pager">
+      <slot name="pager"></slot>
+    </div>
+    <slot></slot>
   </div>
 </template>
 
 <script>
-import _debounce from 'lodash.debounce';
 
 export default {
   data() {
     return {
-      tableHeight: 0
-    };
+
+    }
   },
   mounted() {
-    window.addEventListener('resize', this.handle_tableResize());
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.handle_tableResize);
-  },
-  methods: {
-    handle_tableResize: _debounce(function() {
-      this.tableHeight = this.$refs.table.clientHeight;
-      this.$emit('tableHeight', this.tableHeight - 8);
-    }, 250)
+    console.log(this.$slots)
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
+$padding: 8px;
 .ps-container{
   position: relative;
   padding: 0;
@@ -52,34 +45,49 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding-bottom: 8px;
   .ps-query{
-    padding: 8px;
+    padding: $padding;
     position: relative;
     display: flex;
     .query-item-wrap{
       flex: 1;
       display: flex;
       flex-wrap: wrap;
+      margin-right: 8px;
     }
     .query-action{
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
       width: 120px;
       flex-shrink: 0;
-      padding: 8px;
+      padding: 0;
+      & >>> .el-button+.el-button{
+        margin-left: 0;
+        margin-top: 4px;
+      }
     }
   }
   .ps-controller{
-    padding: 8px;
+    padding: $padding;
     border-top: 1px solid #d9d9d9;
-    border-bottom: 1px solid #d9d9d9;
     position: relative;
   }
   .ps-content{
     position: relative;
     flex: 1;
+    padding: $padding;
+    border-top: 1px solid #d9d9d9;
+    overflow: hidden;
+  }
+  .ps-pager{
+    border-top: 1px solid #d9d9d9;
+    position: relative;
     padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>

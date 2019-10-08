@@ -11,14 +11,14 @@
       v-if="device === 'mobile' && sidebar.opened"
       class="drawer-bg"
       @click="handleClickOutside"
-    />
+    ></div>
     <navbar />
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div class="fixed-header tab-wrapper">
         <tags-view />
         <div v-if="!noBreadcrumb" class="bread-wrapper">
-          <i class="el-icon-caret-right" />
+          <i class="el-icon-caret-right"></i>
           <breadcrumb class="breadcrumb-container" />
         </div>
       </div>
@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import { AppMain, Navbar, Sidebar, TagsView } from './components';
-import ResizeMixin from './mixin/ResizeHandler';
+import { mapState } from 'vuex'
+import { AppMain, Navbar, Sidebar, TagsView } from './components'
+import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
   name: 'Layout',
@@ -44,7 +44,7 @@ export default {
     RightPanel: () => import('@/components/core/RightPanel'),
     Settings: () => import('./components/Settings/index'),
     Sidebar,
-    TagsView,
+    TagsView
   },
   mixins: [ResizeMixin],
   computed: {
@@ -54,7 +54,7 @@ export default {
       showSettings: state => state.settings.showSettings,
       fixedHeader: state => state.settings.fixedHeader,
       noBreadcrumb: state => state.settings.noBreadcrumb,
-      globalLoading: state => state.app.globalLoading,
+      globalLoading: state => state.app.globalLoading
     }),
     classObj() {
       return {
@@ -62,16 +62,16 @@ export default {
         openSidebar: this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
         mobile: this.device === 'mobile',
-        noBreadcrumb: this.noBreadcrumb,
-      };
-    },
+        noBreadcrumb: this.noBreadcrumb
+      }
+    }
   },
   methods: {
     handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false });
-    },
-  },
-};
+      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -83,21 +83,23 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
-  padding-top: 50px;
+  padding-top: 48px;
   .main-container {
     position: relative;
-    padding: 64px 4px 0 4px;
+    padding: 63px 4px 0 4px;
     background-color: $Intermediate;
     min-height: 100%;
     transition: margin-left 0.28s;
     margin-left: $sideBarWidth;
+    overflow: auto;
   }
   &.mobile.openSidebar {
     position: fixed;
     top: 0;
   }
   .tab-wrapper {
-    height: 64px;
+    // height: 64px;
+    overflow: hidden;
     &:before {
       content: '';
       position: absolute;
@@ -132,9 +134,8 @@ export default {
 
 .fixed-header {
   position: fixed;
-  top: 50px;
+  top: 48px;
   padding-top: 4px;
-  right: 4px;
   z-index: 100;
   width: calc(100% - #{$sideBarWidth} - 8px);
   transition: width 0.28s;
@@ -147,16 +148,16 @@ export default {
 }
 .noBreadcrumb {
   .main-container {
-    padding-top: 41px;
+    padding-top: 36px;
   }
-  .tab-wrapper {
-    height: 44px;
-  }
+  // .tab-wrapper {
+  //   // height: 36px;
+  // }
   .fixed-header {
     border-bottom: none;
   }
 }
-.mobile .fixed-header {
-  width: 100%;
-}
+// .mobile .fixed-header {
+//   // width: 100%;
+// }
 </style>

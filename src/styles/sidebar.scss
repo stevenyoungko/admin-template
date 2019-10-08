@@ -1,5 +1,5 @@
 #app {
-
+  overflow: hidden;
   .sidebar-container {
     transition: width 0.28s;
     width: $sideBarWidth !important;
@@ -7,7 +7,7 @@
     height: 100%;
     position: fixed;
     font-size: 0px;
-    top: 50px;
+    top: 48px;
     bottom: 0;
     left: 0;
     z-index: 1001;
@@ -26,8 +26,9 @@
     }
 
     .el-scrollbar {
-      height: calc(100% - 50px);
-      padding-bottom: 50px;
+      height: calc(100% - 12px);
+      // height: 100%;
+      padding-bottom: 36px;
     }
 
     &.has-logo {
@@ -54,10 +55,11 @@
       border: none;
       height: 100%;
       width: 100% !important;
+      font-size: 14px;
       .el-menu-item {
         line-height: 36px;
         height: 36px;
-        // border-bottom: 1px solid #d9d9d9;
+        border-bottom: 1px solid #d9d9d9;
       }
     }
 
@@ -66,7 +68,7 @@
     .el-submenu__title {
       line-height: 36px;
       height: 36px;
-      // border-bottom: 1px solid #d9d9d9;
+      border-bottom: 1px solid #d9d9d9;
       &:hover {
         background-color: $menuHover !important;
       }
@@ -148,6 +150,7 @@
   // mobile responsive
   .mobile {
     .main-container {
+      padding: 36px 0 0 0;
       margin-left: 0px;
     }
 

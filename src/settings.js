@@ -13,7 +13,7 @@ module.exports = {
    * @type {String}
    * @description 左上角LOGO字串
    */
-  logoName: '♞ Drive Thru',
+  logoName: 'PS-Admin',
   /**
    * @type {boolean}
    * @description 設定是否使用 麵包屑功能
@@ -34,4 +34,4 @@ module.exports = {
    * @description 設定devServe 是否使用Mock Server Data | ps: 設定過要重新跑一次 yarn serve
    */
   devUseMock: true
-};
+}

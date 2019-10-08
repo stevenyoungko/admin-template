@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import request from '@/utils/request'
 
 export function getList(params) {
   return request({
@@ -6,5 +6,5 @@ export function getList(params) {
     method: 'get',
     params,
     isLoading: true
-  });
+  })
 }

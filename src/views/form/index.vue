@@ -62,20 +62,20 @@ export default {
         resource: '',
         desc: ''
       }
-    };
+    }
   },
   methods: {
     onSubmit() {
-      this.$message('submit!');
+      this.$message('submit!')
     },
     onCancel() {
       this.$message({
         message: 'cancel!',
         type: 'warning'
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style scoped>
