@@ -7,15 +7,15 @@
 // import addDays from 'date-fns/add_days'
 // import addMonths from 'date-fns/add_months'
 // import isEqual from 'date-fns/is_equal'
-import format from 'date-fns/format'
+// import format from 'date-fns/format'
 // import differenceInDays from 'date-fns/difference_in_days'
 import moment from 'moment'
 // format='YYYY-MM-DDTHH:mm:ss.SSSZ'
-// ref: https://date-fns.org/v1.30.1/docs/format 
-export const getFormat = (date, formatStr, useZ) => moment(date).format(formatStr) + ((useZ) ? 'Z': '')
+// ref: https://date-fns.org/v1.30.1/docs/format
+export const getFormat = (date, formatStr, useZ) => moment(date).format(formatStr) + ((useZ) ? 'Z' : '')
 export const getToday = () => moment().format('YYYY-MM-DD')
 
-export const getYesterday = () => moment().add(-1,'days').format('YYYY-MM-DD')
+export const getYesterday = () => moment().add(-1, 'days').format('YYYY-MM-DD')
 
 export const getTodayRange = () => [moment().startOf('day')._d, moment().endOf('day')._d]
 
@@ -23,28 +23,24 @@ export const getYesterdayRange = () => [moment().subtract(1, 'days').startOf('da
 
 export const getWeek = () => [moment().startOf('week')._d, moment().endOf('week')._d]
 
-export const getLastWeek = () => [moment().subtract(7, 'days').startOf('week')._d,moment().subtract(7, 'days').endOf('week')._d]
+export const getLastWeek = () => [moment().subtract(7, 'days').startOf('week')._d, moment().subtract(7, 'days').endOf('week')._d]
 
-export const getMonth = () => [moment().startOf('month')._d,moment().endOf('month')._d]
+export const getMonth = () => [moment().startOf('month')._d, moment().endOf('month')._d]
 
 export const getLastMonth = () => [moment().subtract(1, 'month').startOf('month')._d, moment().subtract(1, 'month').endOf('month')._d]
 
 export const getLastTwoWeek = () => [moment().subtract(2, 'week').startOf('week')._d, moment().subtract(1, 'week').endOf('week')._d]
 
-export const getNextTwoWeek = () => [moment().startOf('week')._d, moment().add(1,'week').endOf('week')._d]
+export const getNextTwoWeek = () => [moment().startOf('week')._d, moment().add(1, 'week').endOf('week')._d]
 
-export const getLast14Days = () => [moment().add(-14,'days').startOf('day')._d,moment().add(-1,'days').endOf('day')._d]
+export const getLast14Days = () => [moment().add(-14, 'days').startOf('day')._d, moment().add(-1, 'days').endOf('day')._d]
 
-export const getNext14Days = () => [moment().startOf('day')._d,moment().add(13,'days').endOf('day')._d]
+export const getNext14Days = () => [moment().startOf('day')._d, moment().add(13, 'days').endOf('day')._d]
 
-export const getDifferentDays = (end, start) => moment(end).diff(moment(start),'days')
+export const getDifferentDays = (end, start) => moment(end).diff(moment(start), 'days')
 // eslint-disable-next-line
 export const isEqualDate = (dateLeft, dateRight) => moment(dateLeft).isSame(dateRight)
 export const isEqualDateRange = (dateRangeLeft, dateRangeRight) => moment(dateRangeLeft[0]).isSame(dateRangeRight[0]) && moment(dateRangeLeft[1]).isSame(dateRangeRight[1])
-
-
-
-
 
 // date-fns
 // export const getFormat = (date, formatStr, useZ) => format(date, formatStr) + ((useZ) ? 'Z': '')
