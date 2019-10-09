@@ -1,8 +1,8 @@
 <template>
-  <PSContainer v-loading="false" class="dashboard">
+  <PSContainer v-loading="false" class="tabTable">
     <template v-slot:query-group>
       <QueryContainer ref="query" :inline="true" :model="formInline" :rules="rules">
-        <template v-slot:priority>
+        <!-- <template v-slot:priority>
           <el-form-item label="输入框" prop="user">
             <el-input v-model="formInline.user" size="mini" placeholder="请输入内容" />
           </el-form-item>
@@ -18,7 +18,7 @@
               value-format="yyyy-MM-dd"
             />
           </el-form-item>
-        </template>
+        </template> -->
         <template>
           <el-form-item label="活动区域" prop="region">
             <el-select v-model="formInline.region" size="mini" placeholder="活动区域" filterable>
@@ -42,13 +42,6 @@
               value-format="yyyy-MM-dd"
             />
           </el-form-item>
-          <el-form-item>
-            <el-checkbox-group v-model="formInline.checkList">
-              <el-checkbox label="复选框 A" />
-              <el-checkbox label="禁用" disabled />
-              <el-checkbox label="选中且禁用" disabled />
-            </el-checkbox-group>
-          </el-form-item>
         </template>
       </QueryContainer>
     </template>
@@ -57,25 +50,36 @@
       <el-button type="primary" size="small" icon="el-icon-search">查询</el-button>
     </template>
     <template v-slot:controller>
-      <div>Controller</div>
+      <!-- <div>Controller</div> -->
     </template>
     <template #content>
-      <el-table :data="tableData" style="width: 100%" border stripe height="100%">
-        <el-table-column
-          v-for="col in columns"
-          :key="col.prop"
-          :prop="col.prop"
-          :label="col.label"
-        />
-        <el-table-column label="操作">
-          <template slot-scope="scope">
-            <div class="operation">
-              <el-button type="primary" size="mini" icon="el-icon-edit" circle @click="showDiaLog = true" />
-              <el-button type="danger" size="mini" icon="el-icon-delete" circle @click="DeleteDemo(scope)" />
-            </div>
-          </template>
-        </el-table-column>
-      </el-table>
+      <div class="tab-demo">
+        <div class="tab-demo-controll">
+          <el-radio-group v-model="tab.activeName" size="mini" @change="tabChange">
+            <el-radio-button label="锺飞膝" />
+            <el-radio-button label="萧咪咪" />
+            <el-radio-button label="林赛米尔" />
+          </el-radio-group>
+        </div>
+        <div class="tab-demo-table">
+          <el-table :data="tab.activeData" style="width: 100%" border stripe height="100%">
+            <el-table-column
+              v-for="col in columns"
+              :key="col.prop"
+              :prop="col.prop"
+              :label="col.label"
+            />
+            <el-table-column label="操作">
+              <template slot-scope="scope">
+                <div class="operation">
+                  <el-button type="text" size="mini" icon="el-icon-edit" @click="showDiaLog = true">编辑</el-button>
+                  <el-button type="text" size="mini" icon="el-icon-delete" @click="DeleteDemo(scope)">删除</el-button>
+                </div>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </div>
     </template>
     <template v-slot:pager>
       <el-row type="flex" justify="end">
@@ -117,7 +121,7 @@ import { mapGetters } from 'vuex'
 import PSContainer from '@/components/container/PSContainer'
 import QueryContainer from '@/components/container/QueryContainer'
 export default {
-  name: 'DemoDefault',
+  name: 'DemoTabTable',
   components: {
     PSContainer,
     QueryContainer
@@ -137,75 +141,69 @@ export default {
         user: [{ required: true, message: '请输入user', trigger: 'blur' }],
         region: [{ required: false, message: '请输入地区', trigger: 'blur' }]
       },
-      tableData: [
+      tableDataChung: [
         {
           date: '2016-05-03',
-          name: '王小虎',
+          name: '锺飞膝',
           address: '上海市普陀区金沙江路 1518 弄'
         },
         {
           date: '2016-05-02',
-          name: '王小虎',
+          name: '锺飞膝',
           address: '上海市普陀区金沙江路 1518 弄'
         },
         {
           date: '2016-05-04',
-          name: '王小虎',
+          name: '锺飞膝',
           address: '上海市普陀区金沙江路 1518 弄'
         },
         {
           date: '2016-05-01',
-          name: '王小虎',
+          name: '锺飞膝',
           address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          date: '2016-05-08',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          date: '2016-05-06',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          date: '2016-05-07',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
+        }
+      ],
+      tableDataXiao: [
         {
           date: '2016-05-03',
-          name: '王小虎',
+          name: '萧咪咪',
           address: '上海市普陀区金沙江路 1518 弄'
         },
         {
           date: '2016-05-02',
-          name: '王小虎',
+          name: '萧咪咪',
           address: '上海市普陀区金沙江路 1518 弄'
         },
         {
           date: '2016-05-04',
-          name: '王小虎',
+          name: '萧咪咪',
           address: '上海市普陀区金沙江路 1518 弄'
         },
         {
           date: '2016-05-01',
-          name: '王小虎',
+          name: '萧咪咪',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }
+      ],
+      tableDataLin: [
+        {
+          date: '2016-05-03',
+          name: '林赛米尔',
           address: '上海市普陀区金沙江路 1518 弄'
         },
         {
-          date: '2016-05-08',
-          name: '王小虎',
+          date: '2016-05-02',
+          name: '林赛米尔',
           address: '上海市普陀区金沙江路 1518 弄'
         },
         {
-          date: '2016-05-06',
-          name: '王小虎',
+          date: '2016-05-04',
+          name: '林赛米尔',
           address: '上海市普陀区金沙江路 1518 弄'
         },
         {
-          date: '2016-05-07',
-          name: '王小虎',
+          date: '2016-05-01',
+          name: '林赛米尔',
           address: '上海市普陀区金沙江路 1518 弄'
         }
       ],
@@ -283,8 +281,15 @@ export default {
         page: 1,
         pageSize: 25,
         total: 100
+      },
+      tab: {
+        activeName: '锺飞膝',
+        activeData: []
       }
     }
+  },
+  created() {
+    this.tab.activeData = this.tableDataChung
   },
   mounted() {
 
@@ -320,11 +325,40 @@ export default {
         dateTime: '',
         region: ''
       }
+    },
+    tabChange(value) {
+      console.log(value)
+      switch (value) {
+        case '锺飞膝':
+          this.tab.activeData = this.tableDataChung
+          break
+        case '萧咪咪':
+          this.tab.activeData = this.tableDataXiao
+          break
+        case '林赛米尔':
+          this.tab.activeData = this.tableDataLin
+          break
+        default:
+          console.warn('value mapping error')
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.tabTable {
+  .tab-demo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .tab-demo-controll {
+      margin-bottom: 8px;
+    }
+    .tab-demo-table {
+      flex: 1;
+    }
+  }
+}
 </style>

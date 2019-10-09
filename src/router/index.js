@@ -59,11 +59,11 @@ export const constantRoutes = [
         path: 'dashboard',
         name: 'Dashboard',
         component: () => import('@/views/dashboard/index'),
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        meta: { title: '仪表板', icon: 'dashboard', affix: true }
       }
     ]
   },
-
+  Demo,
   {
     path: '/example',
     component: Layout,
@@ -75,7 +75,7 @@ export const constantRoutes = [
         path: 'table',
         name: 'Table333',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table', noTagViews: true }
+        meta: { title: '表格读取', icon: 'table', noTagViews: true }
       }
     ]
   },
@@ -88,18 +88,17 @@ export const constantRoutes = [
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: '表单', icon: 'form' }
       }
     ]
   },
-  Demo,
   {
     path: 'external-link',
     component: Layout,
     children: [
       {
         path: 'https://panjiachen.github.io/vue-element-admin-site/zh/',
-        meta: { title: 'External Link', icon: 'link' }
+        meta: { title: '文檔', icon: 'link' }
       }
     ]
   },

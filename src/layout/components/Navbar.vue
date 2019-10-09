@@ -15,6 +15,9 @@
         {{ logoName }}
       </div>
     </router-link>
+    <div class="mid-box">
+      <div class="clock">系统时间: {{ time }}</div>
+    </div>
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -32,11 +35,17 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import moment from 'moment'
 // import Logo from '../components/Sidebar/Logo'
 
 export default {
   components: {
     // Logo
+  },
+  data() {
+    return {
+      time: moment().add(1, 'seconds').format('YYYY-MM-DD HH:mm:ss')
+    }
   },
   computed: {
     ...mapGetters([
@@ -47,6 +56,9 @@ export default {
       return this.$store.state.settings.logoName
     }
   },
+  mounted() {
+    setInterval(() => { this.tickTime() }, 1000)
+  },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
@@ -54,6 +66,9 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    tickTime() {
+      this.time = moment().add(1, 'seconds').format('YYYY-MM-DD HH:mm:ss')
     }
   }
 }
@@ -65,6 +80,7 @@ $navHeight: 48px;
   height: $navHeight;
   overflow: hidden;
   position: fixed;
+  display: flex;
   z-index: 2000;
   top: 0;
   left: 0;
@@ -93,11 +109,23 @@ $navHeight: 48px;
       margin-right: 8px;
     }
   }
+  .mid-box{
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    flex: 1;
+    .clock{
+      color: #fff;
+      font-size: 12px;
+    }
+  }
   .right-menu {
-    float: right;
+    // float: right;
     height: 100%;
     line-height: $navHeight;
-
+    margin: 0 15px;
     &:focus {
       outline: none;
     }
@@ -121,7 +149,6 @@ $navHeight: 48px;
     }
 
     .avatar-container {
-      margin-right: 15px;
       height: 100%;
       .avatar-wrapper {
         position: relative;

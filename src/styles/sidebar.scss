@@ -3,7 +3,7 @@
   .sidebar-container {
     transition: width 0.28s;
     width: $sideBarWidth !important;
-    background-color:#f5f5f5;
+    background-color:#fff;
     height: 100%;
     position: fixed;
     font-size: 0px;
@@ -55,10 +55,10 @@
       border: none;
       height: 100%;
       width: 100% !important;
-      font-size: 14px;
       .el-menu-item {
         line-height: 36px;
         height: 36px;
+        font-size: 14px;
         border-bottom: 1px solid #d9d9d9;
       }
     }
@@ -74,8 +74,11 @@
       }
     }
 
-    .is-active>.el-submenu__title {
-      color: $subMenuActiveText !important;
+    .is-active{
+      background-color: $Light-80 !important;
+      .el-submenu__title {
+        color: $subMenuActiveText !important;
+      }
     }
 
     & .nest-menu .el-submenu>.el-submenu__title,

@@ -42,3 +42,46 @@
     display: block
   }
 }
+#app {
+  .el-dialog__wrapper {
+    .el-dialog {
+      max-height: 70vh;
+      overflow: auto;
+      &__header {
+        padding: 12px;
+        border-bottom: 1px solid $Intermediate;
+      }
+      &__body {
+        padding: 12px;
+      }
+      &__footer {
+        border-top: 1px solid $Intermediate;
+        padding: 12px;
+      }
+    }
+  }
+}
+.el-message-box__wrapper {
+  .el-message-box {
+    padding: 0;
+    &__header {
+      padding: 12px;
+    }
+    &__content {
+      padding: 12px;
+    }
+    &__btns {
+      padding: 12px;
+      .el-button--small{
+        padding: 7px 15px;
+      }
+    }
+  }
+}
+.is-fullscreen {
+  .el-loading-spinner{
+    .el-icon-loading{
+      font-size: 32px;
+    }
+  }
+}

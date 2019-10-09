@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.menu-wrapper {
-  height: 36px;
-}
+// .menu-wrapper {
+//   // height: 36px;
+// }
 </style>
