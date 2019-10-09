@@ -24,6 +24,12 @@ export default {
       name: 'DemoTabTable',
       component: () => import('@/views/demo/tabTable'),
       meta: { title: '标签表格' }
+    },
+    {
+      path: 'moment',
+      name: 'DemoMoment',
+      component: () => import('@/views/demo/moment'),
+      meta: { title: '表单元素' }
     }
   ]
 }
