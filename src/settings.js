@@ -8,7 +8,7 @@ module.exports = {
    * @type {String}
    * @description 變更document.title 預設 PS-admin
    */
-  title: 'PS-admin-test-1',
+  title: 'PS-admin-test-2',
   /**
    * @type {String}
    * @description 左上角LOGO字串
