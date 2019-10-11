@@ -40,7 +40,7 @@
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+      <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">Login</el-button>
 
       <div class="tips">
         <span style="margin-right:20px;">username: admin</span>
@@ -180,14 +180,15 @@ $light_gray:#eee;
   width: 100%;
   background-color: $bg;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .login-form {
     position: relative;
     width: 520px;
     max-width: 100%;
     padding: 35px;
-    margin: 0 auto;
-    margin-top: 25vh;
     overflow: hidden;
     background-color: #fff;
   }
