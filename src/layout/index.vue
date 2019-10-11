@@ -111,6 +111,8 @@ export default {
     .bread-wrapper {
       display: flex;
       align-items: center;
+      position: relative;
+      z-index: 1;
       height: calc(70px - 44px);
       padding-left: 4px;
       background-color: #fff;
