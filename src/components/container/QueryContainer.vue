@@ -68,6 +68,12 @@ export default {
       margin-top: -2px;
     }
   }
+  & >>> .el-form-item__label{
+    font-weight: 500;
+  }
+  & >>> .el-form-item__content{
+    height: 40px;
+  }
   .priority {
     position: relative;
     display: flex;

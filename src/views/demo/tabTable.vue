@@ -126,7 +126,7 @@ export default {
       showDiaLog: false,
       activeDiaLog: {
         title: '',
-        chart: ''
+        chart: 'PieChart'
       },
       formInline: {
         user: '',

@@ -121,7 +121,7 @@
         <template #footer>
           <el-row type="flex" justify="end">
             <el-button type="primary" size="mini" plain @click="showDiaLog = false">取消</el-button>
-            <el-button type="primary" size="mini">确认</el-button>
+            <el-button type="primary" size="mini" @click="showDiaLog = false">确认</el-button>
           </el-row>
         </template>
       </el-dialog>

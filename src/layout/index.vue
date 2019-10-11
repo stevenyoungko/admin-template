@@ -85,7 +85,7 @@ export default {
   padding-top: 48px;
   .main-container {
     position: relative;
-    padding: 63px 4px 0 4px;
+    padding: 63px 0 0 4px;
     background-color: $Intermediate;
     min-height: 100%;
     transition: margin-left 0.28s;
@@ -138,14 +138,17 @@ export default {
   top: 48px;
   padding-top: 4px;
   z-index: 100;
-  width: calc(100% - #{$sideBarWidth} - 8px);
+  width: calc(100% - #{$sideBarWidth} - 4px);
   transition: width 0.28s;
   // box-shadow: 0 1px 4px rgba(0,21,41,.08);
   border-bottom: 1px solid #d9d9d9;
 }
 
 .hideSidebar .fixed-header {
-  width: calc(100% - 62px);
+  width: calc(100% - 54px - 4px);
+}
+.mobile .fixed-header {
+  width: 100%;
 }
 .noBreadcrumb {
   .main-container {

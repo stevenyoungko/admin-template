@@ -1,6 +1,5 @@
 <template>
   <div class="navbar">
-    <!-- <logo v-if="true" :collapse="false" /> -->
     <router-link to="/">
       <div class="logo-wrapper">
         <!-- <img class="logo-img" src="" alt=""> -->
@@ -16,6 +15,7 @@
       </div>
     </router-link>
     <div class="mid-box">
+      <Hamburger v-if="$store.state.app.device === 'mobile'" class="hamburger" :is-active="sidebar.opened" @toggleClick="toggleSideBar" />
       <div class="clock">系统时间: {{ time }}</div>
     </div>
     <div class="right-menu">
@@ -40,7 +40,7 @@ import moment from 'moment'
 
 export default {
   components: {
-    // Logo
+    Hamburger: () => import('@/components/core/Hamburger')
   },
   data() {
     return {
@@ -119,6 +119,11 @@ $navHeight: 48px;
     .clock{
       color: #fff;
       font-size: 12px;
+      width: 170px;
+    }
+    .hamburger{
+      fill: #fff;
+      cursor: pointer;
     }
   }
   .right-menu {
