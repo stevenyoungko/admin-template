@@ -62,7 +62,7 @@
           </el-radio-group>
         </div>
         <div class="tab-demo-table">
-          <el-table :data="tab.activeData" style="width: 100%" border stripe height="100%">
+          <el-table :data="tab.activeData" style="width: 100%" border stripe height="100%" size="mini">
             <el-table-column
               v-for="col in columns"
               :key="col.prop"
@@ -72,7 +72,10 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <div class="operation">
-                  <el-button type="text" size="mini" icon="el-icon-edit" @click="showDiaLog = true">编辑</el-button>
+                  <el-button type="text" size="mini" icon="el-icon-pie-chart" @click="changeChartDiaLog('圓餅圖', 'PieChart')">圓餅圖</el-button>
+                  <el-button type="text" size="mini" icon="el-icon-data-line" @click="changeChartDiaLog('折線圖', 'LineChart')">折線圖</el-button>
+                  <el-button type="text" size="mini" icon="el-icon-data-analysis" @click="changeChartDiaLog('柱狀圖', 'BarChart')">柱狀圖</el-button>
+                  <el-button type="text" size="mini" icon="el-icon-s-data" @click="changeChartDiaLog('雷達圖', 'RaddarChart')">雷達圖</el-button>
                   <el-button type="text" size="mini" icon="el-icon-delete" @click="DeleteDemo(scope)">删除</el-button>
                 </div>
               </template>
@@ -97,20 +100,8 @@
       </el-row>
     </template>
     <template>
-      <el-dialog title="收货地址" :visible.sync="showDiaLog" center>
-        <div style="height: 40vh;">
-          <el-table :data="gridData" height="100%" border stripe>
-            <el-table-column property="date" label="日期" width="150" />
-            <el-table-column property="name" label="姓名" width="200" />
-            <el-table-column property="address" label="地址" />
-          </el-table>
-        </div>
-        <template #footer>
-          <el-row type="flex" justify="end">
-            <el-button type="primary" size="mini" plain @click="showDiaLog = false">取消</el-button>
-            <el-button type="primary" size="mini">确认</el-button>
-          </el-row>
-        </template>
+      <el-dialog :title="activeDiaLog.title" :visible.sync="showDiaLog" center>
+        <components :is="activeDiaLog.chart" />
       </el-dialog>
     </template>
   </PSContainer>
@@ -123,12 +114,20 @@ import QueryContainer from '@/components/container/QueryContainer'
 export default {
   name: 'DemoTabTable',
   components: {
+    PieChart: () => import('./charts/PieChart'),
+    LineChart: () => import('./charts/LineChart'),
+    RaddarChart: () => import('./charts/RaddarChart'),
+    BarChart: () => import('./charts/BarChart'),
     PSContainer,
     QueryContainer
   },
   data() {
     return {
       showDiaLog: false,
+      activeDiaLog: {
+        title: '',
+        chart: ''
+      },
       formInline: {
         user: '',
         daterange: ['', ''],
@@ -341,6 +340,11 @@ export default {
         default:
           console.warn('value mapping error')
       }
+    },
+    changeChartDiaLog(title, chart) {
+      this.showDiaLog = true
+      this.activeDiaLog.title = title
+      this.activeDiaLog.chart = chart
     }
   }
 }
@@ -358,6 +362,15 @@ export default {
     }
     .tab-demo-table {
       flex: 1;
+    }
+    .operation{
+      & >>> .el-button {
+        margin-left: 5px;
+      }
+      & >>> .el-button + .el-button{
+        margin-left: 5px;
+        margin-right: 5px
+      }
     }
   }
 }

@@ -60,7 +60,7 @@
       <div>Controller</div>
     </template>
     <template #content>
-      <el-table :data="tableData" style="width: 100%" border stripe height="100%">
+      <el-table :data="tableData" style="width: 100%" border stripe height="100%" size="mini">
         <el-table-column
           v-for="col in columns"
           :key="col.prop"

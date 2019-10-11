@@ -5,13 +5,13 @@ export default {
   component: Layout,
   redirect: '/demo/normal',
   name: 'Demo',
-  meta: { title: '样式规范' },
+  meta: { title: '展示' },
   children: [
     {
       path: 'normal',
       name: 'DemoDefault',
       component: () => import('@/views/demo/index'),
-      meta: { title: '展示' }
+      meta: { title: '基本展示' }
     },
     {
       path: 'double',

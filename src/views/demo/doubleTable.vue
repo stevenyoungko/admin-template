@@ -61,8 +61,8 @@
     </template>
     <template #content>
       <el-row :gutter="8" style="height: 100%;overflow: auto;">
-        <el-col :span="24" style="padding-bottom: 8px">
-          <el-table :data="tableData" style="width: 100%" border stripe height="100%">
+        <el-col :span="24" style="padding-bottom: 8px;height: 100%">
+          <el-table :data="tableData" style="width: 100%" border stripe height="100%" size="mini">
             <el-table-column
               v-for="col in columns"
               :key="col.prop"
@@ -78,27 +78,27 @@
               </template>
             </el-table-column>
           </el-table>
-          <el-row class="pagi-wrap">
-            <el-pagination
-              :current-page="pager.page"
-              :page-sizes="[25, 50]"
-              :page-size="pager.pageSize"
-              layout="total, sizes, prev, pager, next, jumper"
-              :total="pager.total"
-              @size-change="pagerEvent($event, 'sizeChange')"
-              @current-change="pagerEvent($event, 'pageChange')"
-            />
-          </el-row>
+        </el-col>
+        <el-col :span="24" class="pagi-wrap">
+          <el-pagination
+            :current-page="pager.page"
+            :page-sizes="[25, 50]"
+            :page-size="pager.pageSize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="pager.total"
+            @size-change="pagerEvent($event, 'sizeChange')"
+            @current-change="pagerEvent($event, 'pageChange')"
+          />
         </el-col>
         <el-col :span="12" style="height: 40%">
-          <el-table :data="gridData" height="100%" border stripe>
+          <el-table :data="gridData" height="100%" border stripe size="mini">
             <el-table-column property="date" label="日期" width="150" />
             <el-table-column property="name" label="姓名" width="200" />
             <el-table-column property="address" label="地址" />
           </el-table>
         </el-col>
         <el-col :span="12" style="height: 40%">
-          <el-table :data="gridData" height="100%" border stripe>
+          <el-table :data="gridData" height="100%" border stripe size="mini">
             <el-table-column property="date" label="日期" width="150" />
             <el-table-column property="name" label="姓名" width="200" />
             <el-table-column property="address" label="地址" />
@@ -347,6 +347,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 8px;
+  padding-bottom: 8px;
 }
 </style>

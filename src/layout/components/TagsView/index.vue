@@ -205,12 +205,12 @@ export default {
       display: inline-block;
       position: relative;
       cursor: pointer;
-      height: 33px;
+      height: 32px;
       min-width: 176px;
       line-height: 32px;
       border-top: 1px solid #d8d8d8;
       border-right: 1px solid #d8d8d8;
-      border-bottom: 1px solid #d8d8d8;
+      // border-bottom: 1px solid #d8d8d8;
       border-radius: 4px 4px 0 0;
       color: #495060;
       background: $Light-80;

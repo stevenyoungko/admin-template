@@ -75,7 +75,11 @@ export const constantRoutes = [
         path: 'table',
         name: 'Table333',
         component: () => import('@/views/table/index'),
-        meta: { title: '表格读取', icon: 'table', noTagViews: true }
+        meta: {
+          title: '表格读取',
+          icon: 'table',
+          noTagViews: true
+        }
       }
     ]
   },

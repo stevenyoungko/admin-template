@@ -8,7 +8,7 @@ module.exports = {
    * @type {String}
    * @description 變更document.title 預設 PS-admin
    */
-  title: 'PS-admin-test-4',
+  title: 'PS-admin-test',
   /**
    * @type {String}
    * @description 左上角LOGO字串
@@ -23,7 +23,7 @@ module.exports = {
    * @type {boolean} true | false
    * @description Whether show the settings right-panel
    */
-  showSettings: true,
+  showSettings: false,
   /**
    * @type {string}
    * @description set TokenKey in LocalStorage Detail Check @/utils/auth.js
