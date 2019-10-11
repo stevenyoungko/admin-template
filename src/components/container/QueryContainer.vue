@@ -44,7 +44,7 @@ export default {
   position: relative;
   width: 100%;
   & >>> .el-form-item {
-    margin: 4px 4px 4px 0;
+    margin: 4px;
     background-color: #f5f5f5;
     padding: 0 12px;
     border-radius: 4px;

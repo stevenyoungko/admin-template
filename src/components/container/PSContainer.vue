@@ -46,7 +46,7 @@ $padding: 8px;
   display: flex;
   flex-direction: column;
   .ps-query{
-    padding: $padding;
+    padding: $padding $padding $padding $padding/2;
     position: relative;
     display: flex;
     .query-item-wrap{
