@@ -2,7 +2,7 @@
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">Ps-admin</h3>
       </div>
 
       <el-form-item prop="username">
@@ -127,7 +127,7 @@ export default {
 /* 修复input 背景不协调 和光标变色 */
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
-$bg:#283443;
+$bg:$Primary;
 $light_gray:#fff;
 $cursor: #fff;
 
@@ -150,7 +150,7 @@ $cursor: #fff;
       -webkit-appearance: none;
       border-radius: 0px;
       padding: 12px 5px 12px 15px;
-      color: $light_gray;
+      color: $Primary;
       height: 47px;
       caret-color: $cursor;
 
@@ -171,7 +171,7 @@ $cursor: #fff;
 </style>
 
 <style lang="scss" scoped>
-$bg:#2d3a4b;
+$bg:$Primary;
 $dark_gray:#889aa4;
 $light_gray:#eee;
 
@@ -185,9 +185,11 @@ $light_gray:#eee;
     position: relative;
     width: 520px;
     max-width: 100%;
-    padding: 160px 35px 0;
+    padding: 35px;
     margin: 0 auto;
+    margin-top: 25vh;
     overflow: hidden;
+    background-color: #fff;
   }
 
   .tips {
@@ -204,7 +206,7 @@ $light_gray:#eee;
 
   .svg-container {
     padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    color: $Primary;
     vertical-align: middle;
     width: 30px;
     display: inline-block;
@@ -215,7 +217,7 @@ $light_gray:#eee;
 
     .title {
       font-size: 26px;
-      color: $light_gray;
+      color: $Primary;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
