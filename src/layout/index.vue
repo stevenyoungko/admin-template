@@ -23,7 +23,7 @@
         </div>
       </div>
       <app-main />
-      <right-panel v-if="showSettings">
+      <right-panel v-if="showSettings" button-top="50%">
         <settings />
       </right-panel>
     </div>

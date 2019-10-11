@@ -44,14 +44,11 @@ export default {
   position: relative;
   width: 100%;
   & >>> .el-form-item {
-    margin: 4px;
+    margin: 4px 4px 4px 0;
     background-color: #f5f5f5;
     padding: 0 12px;
     border-radius: 4px;
     position: relative;
-    &:first-child{
-      margin-left: 0;
-    }
     &.is-required:not(.is-no-asterisk) {
       .el-form-item__label:before {
         position: absolute;

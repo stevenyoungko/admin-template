@@ -103,7 +103,6 @@ export default {
     },
     addTags() {
       const { name, meta } = this.$route
-      console.log(this.$route, 'route?')
       if (name && meta && !meta.noTagViews) {
         this.$store.dispatch('tagsView/addView', this.$route)
       }

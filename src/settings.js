@@ -23,7 +23,7 @@ module.exports = {
    * @type {boolean} true | false
    * @description Whether show the settings right-panel
    */
-  showSettings: false,
+  showSettings: true,
   /**
    * @type {string}
    * @description set TokenKey in LocalStorage Detail Check @/utils/auth.js

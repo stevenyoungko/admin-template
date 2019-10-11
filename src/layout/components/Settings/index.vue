@@ -7,32 +7,49 @@
         <span>Theme Color</span>
         <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange" />
       </div>
+      <div class="drawer-item">
+        <span>No Breadcrumb</span>
+        <el-switch v-model="noBreadcrumb" size="mini" class="drawer-switch" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ThemePicker from '@/components/core/ThemePicker';
+import ThemePicker from '@/components/core/ThemePicker'
 
 export default {
   components: { ThemePicker },
   data() {
-    return {};
+    return {}
+  },
+  computed: {
+    noBreadcrumb: {
+      get() {
+        return this.$store.state.settings.noBreadcrumb
+      },
+      set(value) {
+        this.$store.dispatch('settings/changeSetting', {
+          key: 'noBreadcrumb',
+          value: value
+        })
+      }
+    }
   },
   methods: {
     themeChange(val) {
       this.$store.dispatch('settings/changeSetting', {
         key: 'theme',
         value: val
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .drawer-container {
-  padding: 24px;
+  padding: 12px;
   font-size: 14px;
   line-height: 1.5;
   word-wrap: break-word;

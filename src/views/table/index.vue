@@ -37,7 +37,7 @@
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="Display_time" width="200">
         <template slot-scope="scope">
-          <i class="el-icon-time" />
+          <i class="el-icon-time"></i>
           <span>{{ scope.row.display_time }}</span>
         </template>
       </el-table-column>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { getList } from '@/api/table';
+import { getList } from '@/api/table'
 
 export default {
   filters: {
@@ -54,28 +54,28 @@ export default {
       const statusMap = {
         published: 'success',
         draft: 'gray',
-        deleted: 'danger',
-      };
-      return statusMap[status];
-    },
+        deleted: 'danger'
+      }
+      return statusMap[status]
+    }
   },
   data() {
     return {
       list: null,
-      listLoading: true,
-    };
+      listLoading: true
+    }
   },
   created() {
-    this.fetchData();
+    this.fetchData()
   },
   methods: {
     fetchData() {
-      this.listLoading = true;
+      this.listLoading = true
       getList().then(response => {
-        this.list = response.data.items;
-        this.listLoading = false;
-      });
-    },
-  },
-};
+        this.list = response.data.items
+        this.listLoading = false
+      })
+    }
+  }
+}
 </script>

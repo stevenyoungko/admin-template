@@ -30,7 +30,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$slots)
+    // console.log(this.$slots)
   }
 }
 </script>

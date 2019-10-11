@@ -51,25 +51,25 @@
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate';
+import { validUsername } from '@/utils/validate'
 
 export default {
   name: 'Login',
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
-        callback(new Error('请输入正确的使用者名称'));
+        callback(new Error('请输入正确的使用者名称'))
       } else {
-        callback();
+        callback()
       }
-    };
+    }
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
-        callback(new Error('请输入6位以上的数字'));
+        callback(new Error('请输入6位以上的数字'))
       } else {
-        callback();
+        callback()
       }
-    };
+    }
     return {
       loginForm: {
         username: 'admin',
@@ -82,12 +82,12 @@ export default {
       loading: false,
       passwordType: 'password',
       redirect: undefined
-    };
+    }
   },
   watch: {
     $route: {
       handler(route) {
-        this.redirect = route.query && route.query.redirect;
+        this.redirect = route.query && route.query.redirect
       },
       immediate: true
     }
@@ -95,32 +95,32 @@ export default {
   methods: {
     showPwd() {
       if (this.passwordType === 'password') {
-        this.passwordType = '';
+        this.passwordType = ''
       } else {
-        this.passwordType = 'password';
+        this.passwordType = 'password'
       }
       this.$nextTick(() => {
-        this.$refs.password.focus();
-      });
+        this.$refs.password.focus()
+      })
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.loading = true;
+          this.loading = true
           this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || '/' });
-            this.loading = false;
+            this.$router.push({ path: this.redirect || '/' })
+            this.loading = false
           }).catch(() => {
-            this.loading = false;
-          });
+            this.loading = false
+          })
         } else {
-          console.log('error submit!!');
-          return false;
+          console.log('error submit!!')
+          return false
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
