@@ -3,7 +3,7 @@ import Layout from '@/layout'
 export default {
   path: '/demo',
   component: Layout,
-  redirect: '/demo/normal',
+  redirect: 'noRedirect',
   name: 'Demo',
   meta: { title: '展示' },
   children: [
