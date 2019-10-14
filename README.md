@@ -10,9 +10,46 @@
 > src/router/index.js  核心區塊，緩存/麵包屑/標籤都在此設置  
 > src/utils/request    axios與interceptor，Api errorHandler 請在這處理  
 
+## Installation  
+
+```bash
+# 先開啟gitlab項目,並且clone
+git clone http://gitlab.paradise-soft.com.tw/frontend/${target_repo}.git  
+
+# 新增psadmin遠端
+git remote add psadmin http://gitlab.paradise-soft.com.tw/frontend/ps-admin.git  
+
+# 拉psadmin
+git fetch psadmin  
+
+# 新開psadmin分支
+git checkout -b psadmin psadmin/master
+
+# 切回master & merge psadmin
+git checkout master & git merge psadmin
+
+# 推上目標倉庫遠端 
+git push -set--upstream origin
+```
+
+## Update 
+
+```bash
+# 確認是否有remote  
+git remote -v
+
+# fetch psadmin最新版
+git fetch psadmin
+
+# 建立新版psadmin分支
+git checkout -b new-ps psadmin/master
+
+# merge 項目master & fix conflict
+git checkout master & git merge new-ps
+```
+
 
 ## Build Setup
-
 
 ```bash
 # clone the project
