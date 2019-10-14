@@ -28,7 +28,7 @@ module.exports = {
    * @type {string}
    * @description set TokenKey in LocalStorage Detail Check @/utils/auth.js
    */
-  acessTokenKey: 'vue_admin_template_token',
+  accessTokenKey: 'vue_admin_template_token',
   /**
    * @type {boolean}
    * @description 設定devServe 是否使用Mock Server Data | ps: 設定過要重新跑一次 yarn serve

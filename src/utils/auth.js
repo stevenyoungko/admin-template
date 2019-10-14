@@ -1,7 +1,7 @@
 // import Cookies from 'js-cookie'
 import Setting from '../settings'
 
-const TokenKey = Setting.acessTokenKey
+const TokenKey = Setting.accessTokenKey
 
 export function getToken() {
   return localStorage.getItem(TokenKey)
