@@ -28,7 +28,7 @@ import '@/permission' // permission control
 //   mockXHR()
 // }
 
-// set ElementUI lang to EN
+// set ElementUI lang to zh-CN
 Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false

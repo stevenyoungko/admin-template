@@ -45,7 +45,6 @@ const actions = {
     commit('TOGGLE_DEVICE', device)
   },
   setGlobalLoading({ commit }, show) {
-    console.log(show)
     commit('SET_GLOBAL_LOADING', show)
   }
 }

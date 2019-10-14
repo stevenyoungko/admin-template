@@ -3,6 +3,7 @@ import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
 
+let axiosQueue = 0
 // create an axios instance
 const service = axios.create({
   baseURL: '/api', // url = base url + request url
@@ -21,6 +22,7 @@ service.interceptors.request.use(
       config.headers['X-Token'] = getToken()
     }
     if (config.isLoading) {
+      axiosQueue++
       store.dispatch('app/setGlobalLoading', config.isLoading)
     }
     return config
@@ -47,7 +49,12 @@ service.interceptors.response.use(
   response => {
     console.log('interceptor success', response)
     if (response.config.isLoading) {
-      store.dispatch('app/setGlobalLoading', !response.config.isLoading)
+      if (axiosQueue === 1) {
+        store.dispatch('app/setGlobalLoading', !response.config.isLoading)
+        axiosQueue--
+      } else {
+        axiosQueue--
+      }
     }
     const res = response.data
     // if the custom code is not 20000, it is judged as an error.
@@ -83,7 +90,12 @@ service.interceptors.response.use(
     const { response } = error
     console.log('interceptor error', response)
     if (error.response.config.isLoading) {
-      store.dispatch('app/setGlobalLoading', !response.config.isLoading)
+      if (axiosQueue === 1) {
+        store.dispatch('app/setGlobalLoading', !response.config.isLoading)
+        axiosQueue--
+      } else {
+        axiosQueue--
+      }
     }
     Message({
       message: error.message,
