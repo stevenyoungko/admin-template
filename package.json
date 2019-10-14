@@ -21,6 +21,9 @@
     "initServer": "npm install express http-proxy-middleware dotenv cross-env"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^12.4.0",
+    "@ckeditor/ckeditor5-build-decoupled-document": "^12.4.0",
+    "@ckeditor/ckeditor5-vue": "^1.0.0",
     "axios": "0.18.1",
     "cross-env": "^6.0.3",
     "dotenv": "^8.1.0",

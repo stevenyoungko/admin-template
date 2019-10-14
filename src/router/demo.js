@@ -30,6 +30,14 @@ export default {
       name: 'DemoMoment',
       component: () => import('@/views/demo/moment'),
       meta: { title: '表单元素' }
+    },
+    {
+      path: 'richtext',
+      name: 'DemoRichText',
+      component: () => import('@/views/demo/richText.vue'),
+      meta: {
+        title: '富文本'
+      }
     }
   ]
 }
