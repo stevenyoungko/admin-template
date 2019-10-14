@@ -81,6 +81,7 @@
       <el-row type="flex" justify="end">
         <el-col>
           <el-pagination
+            small
             :current-page="pager.page"
             :page-sizes="[25, 50]"
             :page-size="pager.pageSize"

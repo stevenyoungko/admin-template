@@ -119,7 +119,7 @@ $navHeight: 48px;
     .clock{
       color: #fff;
       font-size: 12px;
-      width: 170px;
+      width: 180px;
     }
     .hamburger{
       fill: #fff;

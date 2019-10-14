@@ -2,7 +2,7 @@
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews" :max="8">
-        <router-view :key="key" />
+        <router-view :key="key" class="router-view" />
       </keep-alive>
     </transition>
   </section>
@@ -44,12 +44,15 @@ export default {
   /* 50= navbar  50  */
   height: calc(100vh - 112px);
   width: 100%;
-  min-width: 1016px;
   position: relative;
   background-color: #fff;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: auto;
   @include scrollBar;
+  .router-view {
+    min-width: 1016px;
+    position: relative;
+  }
 }
 
 </style>

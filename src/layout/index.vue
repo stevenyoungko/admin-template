@@ -90,7 +90,7 @@ export default {
     min-height: 100%;
     transition: margin-left 0.28s;
     margin-left: $sideBarWidth;
-    overflow: auto;
+    overflow: hidden;
   }
   &.mobile.openSidebar {
     position: fixed;
