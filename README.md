@@ -29,7 +29,7 @@ git checkout -b psadmin psadmin/master
 git checkout master && git merge psadmin
 
 # 推上目標倉庫遠端 
-git push -set--upstream origin
+git push --set-upstream origin
 ```
 
 ## Repo Update 
