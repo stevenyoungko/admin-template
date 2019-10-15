@@ -10,7 +10,7 @@
 > src/router/index.js  核心區塊，緩存/麵包屑/標籤都在此設置  
 > src/utils/request    axios與interceptor，Api errorHandler 請在這處理  
 
-## Installation  
+## Repo Setup  
 
 ```bash
 # 先開啟gitlab項目,並且clone
@@ -32,7 +32,7 @@ git checkout master & git merge psadmin
 git push -set--upstream origin
 ```
 
-## Update 
+## Repo Update 
 
 ```bash
 # 確認是否有remote  
@@ -67,7 +67,7 @@ npm run dev || npm run serve
 
 This will automatically open http://localhost:9487
 
-## Build
+## Build Production
 
 ```bash
 # build for production environment
@@ -76,7 +76,7 @@ npm run build
 
 ## Deploy
 
-> pm2 config => ecosystem.config.js
+> pm2 config => pm2.config.js
 
 ```bash
 # DevServer Move Package.json, server(dir), dist(dir), .env.development, ecosystem.config.js
