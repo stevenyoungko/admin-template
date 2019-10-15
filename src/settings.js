@@ -2,6 +2,7 @@ module.exports = {
   /**
    * @type {Number}
    * @description 變更開發port 這邊權重是最小的 process.env.port > process.env.npm_config_port > settings.port
+   * 如果port被佔住 mock server port會對不到 請注意
    */
   port: 9487,
   /**
@@ -11,7 +12,7 @@ module.exports = {
   title: 'PS-admin-test',
   /**
    * @type {String}
-   * @description 左上角LOGO字串
+   * @description 左上角LOGO字串, 登入首頁String
    */
   logoName: 'PS-Admin',
   /**
