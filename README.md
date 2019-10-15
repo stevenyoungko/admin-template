@@ -26,7 +26,7 @@ git fetch psadmin
 git checkout -b psadmin psadmin/master
 
 # 切回master & merge psadmin
-git checkout master & git merge psadmin
+git checkout master && git merge psadmin
 
 # 推上目標倉庫遠端 
 git push -set--upstream origin
@@ -45,7 +45,7 @@ git fetch psadmin
 git checkout -b new-ps psadmin/master
 
 # merge 項目master & fix conflict
-git checkout master & git merge new-ps
+git checkout master && git merge new-ps
 ```
 
 
