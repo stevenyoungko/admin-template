@@ -21,6 +21,7 @@ setup.sh ${name} ${repo url}
 ## Repo Update 
 
 ```bash
+# 執行update
 # 確認是否有remote  
 git remote -v
 
