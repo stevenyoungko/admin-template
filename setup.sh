@@ -1,11 +1,10 @@
-echo "=== ADD PS-admin remote ==="
-git remote add psadmin http://gitlab.paradise-soft.com.tw/frontend/ps-admin.git
-echo "=== Fetch PS-admin ==="
-git fetch psadmin
-echo "=== Create a brunch for PS-admin ==="
-git checkout -b psadmin psadmin/master
-echo "=== Merge it! ==="
-git checkout master && git merge psadmin
+echo '=== Add Remote' $1 $2;
+git remote add $1 $2
+echo '=== Check Remote';
+git remote -v
+echo "=== Create a brunch for New Repo ==="
+git checkout master
 echo "=== Push to Origin ==="
-git push -u origin
-echo "=== Happy Develop Admin ヽ(・×・´)ゞ==="
+git push -u $1 master
+echo "=== Admin Setup Success ヽ(・×・´)ゞ==="
+git remote remove $1
