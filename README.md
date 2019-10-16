@@ -13,23 +13,9 @@
 ## Repo Setup  
 
 ```bash
-# 先開啟gitlab項目,並且clone
-git clone http://gitlab.paradise-soft.com.tw/frontend/${target_repo}.git  
-
-# 新增psadmin遠端
-git remote add psadmin http://gitlab.paradise-soft.com.tw/frontend/ps-admin.git  
-
-# 拉psadmin
-git fetch psadmin  
-
-# 新開psadmin分支
-git checkout -b psadmin psadmin/master
-
-# 切回master & merge psadmin
-git checkout master && git merge psadmin
-
-# 推上目標倉庫遠端 
-git push --set-upstream origin
+# 在PS-admin執行 setup.sh 
+# ex: setup.sh rd-admin http://gitlab.paradise-soft.com.tw/frontend/athena-rd-admin.git  
+setup.sh ${name} ${repo url}
 ```
 
 ## Repo Update 
