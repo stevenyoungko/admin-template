@@ -21,18 +21,8 @@ setup.sh ${name} ${repo url}
 ## Repo Update 
 
 ```bash
-# 執行update
-# 確認是否有remote  
-git remote -v
-
-# fetch psadmin最新版
-git fetch psadmin
-
-# 建立新版psadmin分支
-git checkout -b new-ps psadmin/master
-
-# merge 項目master & fix conflict
-git checkout master && git merge new-ps
+# 執行update.sh
+update.sh
 ```
 
 
