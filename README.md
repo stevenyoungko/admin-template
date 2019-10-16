@@ -6,9 +6,9 @@
 ## Introduction
 
 > src/settings.js      一些初始化建置設定檔  
-> src/permission.js    以beforeEach 做登入驗證相關檔案  
-> src/router/index.js  核心區塊，緩存/麵包屑/標籤都在此設置  
-> src/utils/request    axios與interceptor，Api errorHandler 請在這處理  
+> src/permission.js    以beforeEach 做登入驗證相關檔案 [登錄權限教學](https://juejin.im/post/591aa14f570c35006961acac)  
+> src/router/index.js  核心區塊，緩存/麵包屑/標籤都在此設置 [側邊欄文件](https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/router-and-nav.html#%E9%85%8D%E7%BD%AE%E9%A1%B9)  
+> src/utils/request    axios與interceptor，Api errorHandler 請在這處理 [打接口文件](https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/error.html#%E9%A1%B5%E9%9D%A2)  
 
 ## Repo Setup  
 
