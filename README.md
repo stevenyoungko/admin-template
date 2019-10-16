@@ -15,14 +15,14 @@
 ```bash
 # 在PS-admin執行 setup.sh 
 # ex: setup.sh rd-admin http://gitlab.paradise-soft.com.tw/frontend/athena-rd-admin.git  
-setup.sh ${name} ${repo url}
+./setup.sh ${name} ${repo url}
 ```
 
 ## Repo Update 
 
 ```bash
 # 執行update.sh
-update.sh
+./update.sh
 ```
 
 
