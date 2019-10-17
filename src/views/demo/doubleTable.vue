@@ -6,7 +6,7 @@
           <el-form-item label="输入框" prop="user">
             <el-input v-model="formInline.user" size="mini" placeholder="请输入内容" />
           </el-form-item>
-          <el-form-item label="时间区间筛选" porp="daterange">
+          <el-form-item label="时间区间筛选" prop="daterange">
             <el-date-picker
               v-model="formInline.daterange"
               type="datetimerange"
@@ -26,14 +26,14 @@
               <el-option label="区域二" value="beijing" />
             </el-select>
           </el-form-item>
-          <el-form-item label="单选框">
+          <el-form-item label="单选框" prop="radio">
             <el-radio-group v-model="formInline.radio">
               <el-radio :label="3">备选项1</el-radio>
               <el-radio :label="6">备选项2</el-radio>
               <el-radio :label="9">备选项3</el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item label="单日筛选">
+          <el-form-item label="单日筛选" prop="dateTime">
             <el-date-picker
               v-model="formInline.dateTime"
               size="mini"
@@ -42,7 +42,7 @@
               value-format="yyyy-MM-dd"
             />
           </el-form-item>
-          <el-form-item>
+          <el-form-item prop="checkList">
             <el-checkbox-group v-model="formInline.checkList">
               <el-checkbox label="复选框 A" />
               <el-checkbox label="禁用" disabled />

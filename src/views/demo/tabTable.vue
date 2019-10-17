@@ -26,14 +26,14 @@
               <el-option label="区域二" value="beijing" />
             </el-select>
           </el-form-item>
-          <el-form-item label="单选框">
+          <el-form-item label="单选框" prop="radio">
             <el-radio-group v-model="formInline.radio">
               <el-radio :label="3">备选项1</el-radio>
               <el-radio :label="6">备选项2</el-radio>
               <el-radio :label="9">备选项3</el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item label="单日筛选">
+          <el-form-item label="单日筛选" prop="dateTime">
             <el-date-picker
               v-model="formInline.dateTime"
               size="mini"

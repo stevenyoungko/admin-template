@@ -34,6 +34,15 @@ export default {
     },
     resetForm() {
       this.$refs.form.resetFields()
+    },
+    submitForm(cb) {
+      this.$refs['form'].validate(valid => {
+        if (valid) {
+          cb()
+        } else {
+          return
+        }
+      })
     }
   }
 }
@@ -72,7 +81,13 @@ export default {
     font-weight: 500;
   }
   & >>> .el-form-item__content{
+    display: inline-flex;
+    align-items: center;
     height: 40px;
+    .el-form-item__error--inline{
+      flex-shrink: 0;
+      margin-top: 0;
+    }
   }
   .priority {
     position: relative;
