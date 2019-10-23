@@ -109,7 +109,7 @@ export default {
   .optional {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 4px;
+    // padding-top: 4px;
   }
 }
 </style>
