@@ -18,18 +18,19 @@ switch (process.env.NODE_ENV) {
 const config = require('dotenv').config({ path: _env })
 const port = process.env.PORT || 8080
 console.log('.env config', config)
+console.log(config.parsed.VUE_APP_TARGET_API)
 
-// app.use(
-//   process.env.VUE_APP_BASE_API,
-//   proxy({
-//     target: 'api',
-//     ws: false,
-//     changeOrigin: true,
-//     pathRewrite: {
-//       ['^api']: ''
-//     }
-//   })
-// )
+app.use(
+  '/api',
+  proxy({
+    target: config.parsed.VUE_APP_TARGET_API,
+    ws: false,
+    changeOrigin: true,
+    pathRewrite: {
+      '^/api': ''
+    }
+  })
+)
 
 // serve pure static assets
 // app.use(expressStaticGzip(path.join(__dirname, '../dist')));
