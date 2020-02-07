@@ -1,6 +1,6 @@
 <template>
   <div class="ps-container">
-    <div class="ps-query">
+    <div v-if="this.$slots['query-group'] || this.$slots['query-action']" class="ps-query">
       <div v-if="this.$slots['query-group']" class="query-item-wrap">
         <slot name="query-group"></slot>
       </div>
