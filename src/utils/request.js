@@ -21,6 +21,15 @@ service.interceptors.request.use(
       // please modify it according to the actual situation
       config.headers['X-Token'] = getToken()
     }
+    if (config.clean) {
+      const query = config.method !== 'get' ? config.data : config.params
+      const queryKey = Object.keys(query)
+      queryKey.forEach(item => {
+        if (query[item] === '') {
+          delete query[item]
+        }
+      })
+    }
     if (config.isLoading) {
       axiosQueue++
       store.dispatch('app/setGlobalLoading', config.isLoading)
