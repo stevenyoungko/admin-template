@@ -99,6 +99,8 @@ export default {
           }
           if (menu[key].children) {
             flat(menu[key].children)
+          } else if (!menu[key].component) {
+            return
           } else if (menu[key].path && menu[key].name && !isExternal(menu[key].path)) {
             newMenu.push(menu[key])
           } else if (!isExternal(menu[key].path) || !menu[key].path || !menu[key].meta || !menu[key].meta.title) {
