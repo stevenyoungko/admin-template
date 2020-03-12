@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -57,6 +58,19 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
+    },
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            compress: {
+              drop_console: true, // console
+              drop_debugger: false,
+              pure_funcs: ['console.log']// 移除console
+            }
+          }
+        })
+      ]
     }
   },
   chainWebpack(config) {
