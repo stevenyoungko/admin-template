@@ -56,7 +56,7 @@ service.interceptors.response.use(
    * You can also judge the status by HTTP Status Code
    */
   response => {
-    console.log('interceptor success', response)
+    console.log(`[Success][${response.config.method.toUpperCase()}]:: ${response.config.url} \n`, response)
     if (response.config.isLoading) {
       if (axiosQueue === 1) {
         store.dispatch('app/setGlobalLoading', !response.config.isLoading)
@@ -97,7 +97,7 @@ service.interceptors.response.use(
   },
   error => {
     const { response } = error
-    console.log('interceptor error', response)
+    console.log(`[Error][${response.config.method.toUpperCase()}]:: ${response.config.url} \n`, response)
     if (error.response.config.isLoading) {
       if (axiosQueue === 1) {
         store.dispatch('app/setGlobalLoading', !response.config.isLoading)
