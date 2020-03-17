@@ -42,6 +42,20 @@ export const getDifferentDays = (end, start) => moment(end).diff(moment(start), 
 export const isEqualDate = (dateLeft, dateRight) => moment(dateLeft).isSame(dateRight)
 export const isEqualDateRange = (dateRangeLeft, dateRangeRight) => moment(dateRangeLeft[0]).isSame(dateRangeRight[0]) && moment(dateRangeLeft[1]).isSame(dateRangeRight[1])
 
+/**
+ * for element-ui 日期時間選擇器當地時區轉成 UTC 時區
+ * 傳進來的參數需要是 (YYYY-MM-DD HH:mm:ss) 格式
+ * 由於按下 clear(清空) 綁定值會是 null，多新增判斷過濾 null
+ * @param {String} localTime
+ * @returns {string} UTC Time
+ */
+export function formatLocal2Utc(localTime) {
+  if (localTime) {
+    return moment(localTime).utc().format()
+  }
+  return ''
+}
+
 // date-fns
 // export const getFormat = (date, formatStr, useZ) => format(date, formatStr) + ((useZ) ? 'Z': '')
 // export const getToday = () => format(new Date(), 'YYYY-MM-DD');
