@@ -100,7 +100,7 @@
     </template>
     <template>
       <el-dialog :title="opTitle" :visible.sync="showDiaLog" center width="400px">
-        <dialog-content>
+        <PSDialogContainer>
           <div>
             <el-form :model="editForm" label-width="auto">
               <el-form-item label="日期">
@@ -120,11 +120,11 @@
               <el-button type="primary" size="mini" @click="showDiaLog = false">确认</el-button>
             </el-row>
           </template>
-        </dialog-content>
+        </PSDialogContainer>
       </el-dialog>
 
       <el-dialog title="提示" :visible.sync="showDel" center width="400px">
-        <dialog-content>
+        <PSDialogContainer>
           <div>
             是否要删除
           </div>
@@ -134,11 +134,11 @@
               <el-button type="danger" size="mini" @click="showDel = false">刪除</el-button>
             </el-row>
           </template>
-        </dialog-content>
+        </PSDialogContainer>
       </el-dialog>
 
       <el-dialog title="測試標題" :visible.sync="showDia">
-        <dialog-content>
+        <PSDialogContainer>
           <div>
             <div style="height: 200px;">
               我是內容喔
@@ -160,7 +160,7 @@
             <el-button type="primary" size="mini" @click="showDia = false">取消</el-button>
             <el-button type="primary" size="mini" @click="showDia = false">确认</el-button>
           </template>
-        </dialog-content>
+        </PSDialogContainer>
       </el-dialog>
     </template>
   </PSContainer>
@@ -169,13 +169,13 @@
 <script>
 import PSContainer from '@/components/container/PSContainer'
 import QueryContainer from '@/components/container/QueryContainer'
-import DialogContent from '@/components/dailog/PSDialogContent'
+import PSDialogContainer from '@/components/container/PSDialogContainer'
 export default {
   name: 'DemoDefault',
   components: {
     PSContainer,
     QueryContainer,
-    DialogContent
+    PSDialogContainer
   },
   data() {
     return {

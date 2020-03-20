@@ -111,7 +111,7 @@
     </template>
     <template>
       <el-dialog title="收货地址" :visible.sync="showDiaLog" center>
-        <dialog-content>
+        <PSDialogContainer>
           <div style="height: 40vh;">
             <el-table :data="gridData" height="100%" border stripe>
               <el-table-column property="date" label="日期" width="150" />
@@ -125,7 +125,7 @@
               <el-button type="primary" size="mini" @click="showDiaLog = false">确认</el-button>
             </el-row>
           </template>
-        </dialog-content>
+        </PSDialogContainer>
       </el-dialog>
     </template>
   </PSContainer>
@@ -134,13 +134,13 @@
 <script>
 import PSContainer from '@/components/container/PSContainer'
 import QueryContainer from '@/components/container/QueryContainer'
-import DialogContent from '@/components/dailog/PSDialogContent'
+import PSDialogContainer from '@/components/container/PSDialogContainer'
 export default {
   name: 'DemoDoubleTable',
   components: {
     PSContainer,
     QueryContainer,
-    DialogContent
+    PSDialogContainer
   },
   data() {
     return {

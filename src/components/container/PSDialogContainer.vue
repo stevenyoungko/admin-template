@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'PSDialogContent',
+  name: 'PSDialogContainer',
   data() {
     return {
 
