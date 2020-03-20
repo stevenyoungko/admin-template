@@ -2,7 +2,6 @@
   <div class="navbar">
     <router-link to="/">
       <div class="logo-wrapper">
-        <!-- <img class="logo-img" src="" alt=""> -->
         <svg class="logo-img" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="Rectangle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <rect fill="#FFFFFF" fill-rule="nonzero" x="0" y="0" width="100" height="100" rx="2" />
@@ -16,36 +15,23 @@
     </router-link>
     <div class="mid-box">
       <Hamburger v-if="$store.state.app.device === 'mobile'" class="hamburger" :is-active="sidebar.opened" @toggleClick="toggleSideBar" />
-      <div class="clock">系统时间: {{ time }}</div>
+      <HeaderSlot />
     </div>
     <div class="right-menu">
-      <el-dropdown class="avatar-container" trigger="click">
-        <div class="avatar-wrapper">
-          <svg-icon icon-class="user" class-name="user-avatar" fill="#fff" />
-        </div>
-        <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <el-dropdown-item>
-            <span style="display:block;" @click="logout">Log Out</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+      <ProfileSlot />
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import moment from 'moment'
-// import Logo from '../components/Sidebar/Logo'
-
+import HeaderSlot from '@/components/headerSlot'
+import ProfileSlot from '@/components/profileSlot'
 export default {
   components: {
+    HeaderSlot,
+    ProfileSlot,
     Hamburger: () => import('@/components/core/Hamburger')
-  },
-  data() {
-    return {
-      time: moment().add(1, 'seconds').format('YYYY-MM-DD HH:mm:ss')
-    }
   },
   computed: {
     ...mapGetters([
@@ -56,19 +42,9 @@ export default {
       return this.$store.state.settings.logoName
     }
   },
-  mounted() {
-    setInterval(() => { this.tickTime() }, 1000)
-  },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
-    },
-    async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-    },
-    tickTime() {
-      this.time = moment().add(1, 'seconds').format('YYYY-MM-DD HH:mm:ss')
     }
   }
 }
@@ -116,11 +92,7 @@ $navHeight: 48px;
     align-items: center;
     height: 100%;
     flex: 1;
-    .clock{
-      color: #fff;
-      font-size: 14px;
-      width: 210px;
-    }
+
     .hamburger{
       fill: #fff;
       cursor: pointer;
@@ -153,33 +125,6 @@ $navHeight: 48px;
       }
     }
 
-    .avatar-container {
-      height: 100%;
-      .avatar-wrapper {
-        position: relative;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        .user-avatar {
-          cursor: pointer;
-          width: 30px;
-          height: 30px;
-          padding: 5px;
-          border-radius: 50%;
-          background-color: #fff;
-          color: $navBarBg;
-        }
-
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
-          color: #fff;
-        }
-      }
-    }
   }
 }
 </style>

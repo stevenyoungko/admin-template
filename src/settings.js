@@ -14,7 +14,7 @@ module.exports = {
    * @type {String}
    * @description 左上角LOGO字串, 登入首頁String
    */
-  logoName: 'PS-Admin',
+  logoName: 'PS-Admi',
   /**
    * @type {boolean}
    * @description 設定是否使用 麵包屑功能
