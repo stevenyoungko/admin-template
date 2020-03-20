@@ -1,10 +1,10 @@
 <template>
-  <div class="dialog-container">
-    <div class="dialog-container__content">
+  <div class="ps-dialog-container">
+    <div class="ps-dialog-container__content">
       <slot></slot>
     </div>
 
-    <div v-if="$slots.footer" class="dialog-container__footer" :class="{'is-right': footerRight}">
+    <div v-if="$slots.footer" class="ps-dialog-container__footer" :class="{'is-right': footerRight}">
       <slot name="footer"></slot>
     </div>
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'DialogContent',
+  name: 'PSDialogContent',
   props: {
     footerRight: {
       type: Boolean,
@@ -42,7 +42,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.dialog-container {
+.ps-dialog-container {
   position: relative;
   margin: -12px -12px 0 -12px;
 

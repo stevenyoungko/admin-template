@@ -135,7 +135,7 @@
 <script>
 import PSContainer from '@/components/container/PSContainer'
 import QueryContainer from '@/components/container/QueryContainer'
-import DialogContent from '@/components/dailog/DialogContent'
+import DialogContent from '@/components/dailog/PSDialogContent'
 export default {
   name: 'DemoDoubleTable',
   components: {
