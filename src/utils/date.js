@@ -42,6 +42,40 @@ export const getDifferentDays = (end, start) => moment(end).diff(moment(start), 
 export const isEqualDate = (dateLeft, dateRight) => moment(dateLeft).isSame(dateRight)
 export const isEqualDateRange = (dateRangeLeft, dateRangeRight) => moment(dateRangeLeft[0]).isSame(dateRangeRight[0]) && moment(dateRangeLeft[1]).isSame(dateRangeRight[1])
 
+/**
+ * For Element-ui 日期時間選擇器當地時區轉成 UTC 時區
+ * default type 為 'datetimerange'
+ * 傳進來的參數需要是 (YYYY-MM-DD HH:mm:ss) 格式
+ * 由於按下 clear(清空) 綁定值會是 null，多新增判斷過濾 null
+ * @param {String} localTime
+ * @param {Boolean} notRange
+ * 如果日期時間選擇器的 type 不是 range，notRange 請一定要傳 true
+ * @returns {Array | String} UTC Time
+ */
+export function formatLocal2Utc(localTime, notRange) {
+  try {
+    if (localTime === null) {
+      return notRange ? '' : ['', '']
+    }
+    if (typeof localTime === 'string') {
+      if (!notRange) console.error('formatLocal2Utc 需要傳參數2 {true} 來判斷不是 Range type')
+      return localTime === '' ? '' : moment(localTime).utc().format()
+    } else if (Array.isArray(localTime)) {
+      if (notRange) console.error('formatLocal2Utc 是 Range type 時參數2為 {ture}，清空資料會報錯，請不用傳值')
+      return [
+        localTime[0] ? moment(localTime[0]).utc().format() : '',
+        localTime[1] ? moment(localTime[1]).utc().format() : ''
+      ]
+    } else {
+      throw new Error('formatLocal2Utc 參數1 只能是 Array 及 String')
+    }
+  } catch (e) {
+    console.error(e.message)
+    return notRange ? '' : ['', '']
+  }
+}
+
+
 // date-fns
 // export const getFormat = (date, formatStr, useZ) => format(date, formatStr) + ((useZ) ? 'Z': '')
 // export const getToday = () => format(new Date(), 'YYYY-MM-DD');
