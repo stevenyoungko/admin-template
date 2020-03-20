@@ -81,7 +81,6 @@
         </el-col>
         <el-col :span="24" class="pagi-wrap">
           <el-pagination
-            small
             :current-page="pager.page"
             :page-sizes="[25, 50]"
             :page-size="pager.pageSize"
