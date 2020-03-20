@@ -60,7 +60,10 @@
       <el-button type="primary" size="small" icon="el-icon-search" @click="submitForm">查询</el-button>
     </template>
     <template v-slot:controller>
-      <div><el-button type="primary" size="mini" @click="operationDialog('', 'create')">新增</el-button></div>
+      <div>
+        <el-button type="primary" size="mini" @click="operationDialog('', 'create')">新增</el-button>
+        <el-button type="primary" size="mini" @click="openDailog()">header 及 footer 固定的彈窗</el-button>
+      </div>
     </template>
     <template #content>
       <el-table :data="tableData" style="width: 100%" border stripe height="100%" size="mini">
@@ -98,43 +101,84 @@
     </template>
     <template>
       <el-dialog :title="opTitle" :visible.sync="showDiaLog" center width="400px">
-        <div>
-          <el-form :model="editForm" label-width="auto">
-            <el-form-item label="日期">
-              <el-date-picker v-model="editForm.date" size="mini" type="date" placeholder="选择日期" style="width: 100%;" />
-            </el-form-item>
-            <el-form-item label="姓名">
-              <el-input v-model="editForm.name" size="mini" />
-            </el-form-item>
-            <el-form-item label="地址">
-              <el-input v-model="editForm.address" size="mini" />
-            </el-form-item>
-          </el-form>
-        </div>
-        <template #footer>
-          <el-row type="flex" justify="end">
+        <dialog-content footer-right>
+          <div>
+            <el-form :model="editForm" label-width="auto">
+              <el-form-item label="日期">
+                <el-date-picker v-model="editForm.date" size="mini" type="date" placeholder="选择日期" style="width: 100%;" />
+              </el-form-item>
+              <el-form-item label="姓名">
+                <el-input v-model="editForm.name" size="mini" />
+              </el-form-item>
+              <el-form-item label="地址">
+                <el-input v-model="editForm.address" size="mini" />
+              </el-form-item>
+            </el-form>
+          </div>
+          <template #footer>
             <el-button type="primary" size="mini" plain @click="showDiaLog = false">取消</el-button>
             <el-button type="primary" size="mini" @click="showDiaLog = false">确认</el-button>
-          </el-row>
-        </template>
+          </template>
+        </dialog-content>
+      </el-dialog>
+
+      <el-dialog title="提示" :visible.sync="showDel" center width="400px">
+        <dialog-content footer-right>
+          <div>
+            是否要删除
+          </div>
+          <template #footer>
+            <el-button size="mini" plain @click="showDel = false">取消</el-button>
+            <el-button type="danger" size="mini" @click="showDel = false">刪除</el-button>
+          </template>
+        </dialog-content>
+      </el-dialog>
+
+      <el-dialog title="測試標題" :visible.sync="showDia">
+        <dialog-content>
+          <div>
+            <div style="height: 200px;">
+              我是內容喔
+            </div>
+            <div style="height: 200px;">
+              我是內容喔
+            </div>
+            <div style="height: 200px;">
+              我是內容喔
+            </div>
+            <div style="height: 200px;">
+              我是內容喔
+            </div>
+            <div style="height: 200px;">
+              我是內容喔
+            </div>
+          </div>
+          <template #footer>
+            <el-button type="primary" size="mini" @click="showDia = false">取消</el-button>
+            <el-button type="primary" size="mini" @click="showDia = false">确认</el-button>
+          </template>
+        </dialog-content>
       </el-dialog>
     </template>
   </PSContainer>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import PSContainer from '@/components/container/PSContainer'
 import QueryContainer from '@/components/container/QueryContainer'
+import DialogContent from '@/components/dailog/DialogContent'
 export default {
   name: 'DemoDefault',
   components: {
     PSContainer,
-    QueryContainer
+    QueryContainer,
+    DialogContent
   },
   data() {
     return {
       showDiaLog: false,
+      showDia: false,
+      showDel: false,
       opTitle: '',
       formInline: {
         user: '',
@@ -303,18 +347,13 @@ export default {
       }
     },
     DeleteDemo() {
-      this.$confirm('是否要删除', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        // confirm
-      }).catch(() => {
-        // cancel
-      })
+      this.showDel = true
     },
     getList() {
       alert('submit')
+    },
+    openDailog() {
+      this.showDia = true
     },
     submitForm() {
       this.$refs.query.submitForm(this.getList)
