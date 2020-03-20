@@ -101,7 +101,7 @@
     </template>
     <template>
       <el-dialog :title="opTitle" :visible.sync="showDiaLog" center width="400px">
-        <dialog-content footer-right>
+        <dialog-content>
           <div>
             <el-form :model="editForm" label-width="auto">
               <el-form-item label="日期">
@@ -116,20 +116,24 @@
             </el-form>
           </div>
           <template #footer>
-            <el-button type="primary" size="mini" plain @click="showDiaLog = false">取消</el-button>
-            <el-button type="primary" size="mini" @click="showDiaLog = false">确认</el-button>
+            <el-row type="flex" justify="end">
+              <el-button type="primary" size="mini" plain @click="showDiaLog = false">取消</el-button>
+              <el-button type="primary" size="mini" @click="showDiaLog = false">确认</el-button>
+            </el-row>
           </template>
         </dialog-content>
       </el-dialog>
 
       <el-dialog title="提示" :visible.sync="showDel" center width="400px">
-        <dialog-content footer-right>
+        <dialog-content>
           <div>
             是否要删除
           </div>
           <template #footer>
-            <el-button size="mini" plain @click="showDel = false">取消</el-button>
-            <el-button type="danger" size="mini" @click="showDel = false">刪除</el-button>
+            <el-row type="flex" justify="end">
+              <el-button size="mini" plain @click="showDel = false">取消</el-button>
+              <el-button type="danger" size="mini" @click="showDel = false">刪除</el-button>
+            </el-row>
           </template>
         </dialog-content>
       </el-dialog>

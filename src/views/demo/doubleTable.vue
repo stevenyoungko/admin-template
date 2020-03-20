@@ -112,7 +112,7 @@
     </template>
     <template>
       <el-dialog title="收货地址" :visible.sync="showDiaLog" center>
-        <dialog-content footer-right>
+        <dialog-content>
           <div style="height: 40vh;">
             <el-table :data="gridData" height="100%" border stripe>
               <el-table-column property="date" label="日期" width="150" />

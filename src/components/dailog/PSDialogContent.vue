@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
 
-    <div v-if="$slots.footer" class="ps-dialog-container__footer" :class="{'is-right': footerRight}">
+    <div v-if="$slots.footer" class="ps-dialog-container__footer">
       <slot name="footer"></slot>
     </div>
   </div>
@@ -13,12 +13,6 @@
 <script>
 export default {
   name: 'PSDialogContent',
-  props: {
-    footerRight: {
-      type: Boolean,
-      default: false
-    }
-  },
   data() {
     return {
 
@@ -57,11 +51,6 @@ export default {
   &__footer {
     padding: 12px 14px 0 14px;
     position: relative;
-    display: flex;
-
-    &.is-right {
-      justify-content: flex-end;
-    }
 
     &::before {
       content: '';
