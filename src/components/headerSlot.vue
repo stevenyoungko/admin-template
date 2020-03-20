@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header-slot">
     <div class="clock">系统时间: {{ time }}</div>
   </div>
 </template>
