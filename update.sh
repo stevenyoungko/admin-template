@@ -18,5 +18,4 @@ else
   echo '=== Update！！！ ==='
   git checkout update-admin && git merge psadmin
   echo 'Fix Conflict and Save'
-  git remote remove psadmin
 fi

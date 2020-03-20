@@ -1,11 +1,13 @@
 <template>
-  <el-form ref="form" class="query-container" v-bind="$attrs">
-    <div v-if="haspriority" class="priority">
-      <slot name="priority"></slot>
-      <el-button class="circle-btn" :icon="isCollapse ? 'el-icon-arrow-down' : 'el-icon-arrow-up'" @click="handle_collapse" />
-    </div>
+  <el-form ref="form" class="ps-query-container" v-bind="$attrs">
+    <template v-if="haspriority">
+      <el-button class="ps-query-container__collapseBtn" :icon="isCollapse ? 'el-icon-arrow-down' : 'el-icon-arrow-up'" @click="handle_collapse" />
+      <div class="ps-query-container__priority">
+        <slot name="priority"></slot>
+      </div>
+    </template>
     <el-collapse-transition>
-      <div v-show="!isCollapse" class="optional">
+      <div v-show="!isCollapse" class="ps-query-container__optional">
         <slot></slot>
       </div>
     </el-collapse-transition>
@@ -49,9 +51,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.query-container {
+.ps-query-container {
   position: relative;
   width: 100%;
+  padding-right: 36px;
   & >>> .el-form-item {
     margin: 4px;
     background-color: #f5f5f5;
@@ -89,24 +92,22 @@ export default {
       margin-top: 0;
     }
   }
-  .priority {
+  &__priority {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    // margin-bottom: 4px;
-    // padding-right: 36px;
-    .circle-btn {
+  }
+  &__collapseBtn {
       position: absolute;
       right: 4px;
-      top: 8px;
+      top: 4px;
       // margin-top: 11px;
       padding: 0;
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       flex-shrink: 0;
-    }
   }
-  .optional {
+  &__optional {
     display: flex;
     flex-wrap: wrap;
     // padding-top: 4px;

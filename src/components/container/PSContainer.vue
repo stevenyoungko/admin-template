@@ -58,11 +58,12 @@ $padding: 8px;
     .query-action{
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      width: 120px;
+      align-items: flex-start;
+      justify-content: flex-start;
       flex-shrink: 0;
       padding: 0;
+      min-width: 80px;
+      padding-top: 4px;
       & >>> .el-button+.el-button{
         margin-left: 0;
         margin-top: 4px;
