@@ -76,13 +76,13 @@
             <td>true / false</td>
             <td>false</td>
             <td>
-              <PSButton type="primary" icon="user" circle />
-              <PSButton type="success" icon="user" circle />
-              <PSButton type="warning" icon="user" circle />
+              <PSButton type="primary" circle><i class="el-icon-edit"></i></PSButton>
+              <PSButton type="warning" circle><i class="el-icon-share"></i></PSButton>
+              <PSButton type="danger" circle><i class="el-icon-delete"></i></PSButton>
             </td>
           </tr>
           <tr>
-            <td>加载按钮</td>
+            <td>加载效果</td>
             <td>loading</td>
             <td>Boolean</td>
             <td>true / false</td>
@@ -91,8 +91,29 @@
               <PSButton type="primary" :loading="status">按钮文字</PSButton>
               <PSButton type="success" :loading="status">按钮文字</PSButton>
               <PSButton type="warning" :loading="status">按钮文字</PSButton>
-              <PSButton type="danger" :loading="status">按钮文字</PSButton>
               <PSButton type="intermediate" :loading="status">按钮文字</PSButton>
+            </td>
+          </tr>
+          <tr>
+            <td>加载的icon</td>
+            <td>loading-icon</td>
+            <td>String</td>
+            <td>@/icons/svg/*.svg</td>
+            <td>elementUI</td>
+            <td>
+              <PSButton type="primary" :loading="status" loading-icon="grid">按钮文字</PSButton>
+              <PSButton type="success" :loading="status" loading-icon="audio">按钮文字</PSButton>
+              <PSButton type="warning" :loading="status" loading-icon="three-dots">按钮文字</PSButton>
+            </td>
+          </tr>
+          <tr>
+            <td>加载icon的位置</td>
+            <td>loading-right</td>
+            <td>Boolean</td>
+            <td>true / false</td>
+            <td>false</td>
+            <td>
+              <PSButton type="warning" :loading="status" loading-icon="three-dots" loading-right>按钮文字</PSButton>
               <button @click="loadingStatus">DEMO</button>
             </td>
           </tr>
@@ -103,18 +124,19 @@
             <td>@/icons/svg/*.svg</td>
             <td>''</td>
             <td>
-              <PSButton type="primary" icon="user">按钮文字</PSButton>
+              <PSButton type="primary"><template #left-icon><i class="el-icon-share"></i></template>按钮文字</PSButton>
+              <PSButton type="success" icon="user">按钮文字</PSButton>
             </td>
           </tr>
           <tr>
             <td>icon位置</td>
-            <td>position</td>
+            <td>iconPosition</td>
             <td>Boolean</td>
             <td>true / false</td>
             <td>false</td>
             <td>
-              <PSButton type="primary" icon="user" position>按钮文字</PSButton>
-              <PSButton type="success" icon="user">按钮文字</PSButton>
+              <PSButton type="primary" icon="user">按钮文字</PSButton>
+              <PSButton type="primary" icon="user" icon-position>按钮文字</PSButton>
             </td>
           </tr>
         </tbody>
