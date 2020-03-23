@@ -76,9 +76,16 @@
             <td>true / false</td>
             <td>false</td>
             <td>
-              <PSButton type="primary" circle><i class="el-icon-edit"></i></PSButton>
-              <PSButton type="warning" circle><i class="el-icon-share"></i></PSButton>
-              <PSButton type="danger" circle><i class="el-icon-delete"></i></PSButton>
+              <PSButton type="primary" circle icon="user" />
+              <PSButton type="primary" circle>
+                <i class="el-icon-edit"></i>
+              </PSButton>
+              <PSButton type="warning" circle>
+                <i class="el-icon-share"></i>
+              </PSButton>
+              <PSButton type="danger" circle>
+                <i class="el-icon-delete"></i>
+              </PSButton>
             </td>
           </tr>
           <tr>
@@ -88,6 +95,7 @@
             <td>true / false</td>
             <td>false</td>
             <td>
+              <!-- https://samherbert.net/svg-loaders/ -->
               <PSButton type="primary" :loading="status">按钮文字</PSButton>
               <PSButton type="success" :loading="status">按钮文字</PSButton>
               <PSButton type="warning" :loading="status">按钮文字</PSButton>
@@ -113,8 +121,13 @@
             <td>true / false</td>
             <td>false</td>
             <td>
-              <PSButton type="warning" :loading="status" loading-icon="three-dots" loading-right>按钮文字</PSButton>
-              <button @click="loadingStatus">DEMO</button>
+              <PSButton
+                type="warning"
+                :loading="status"
+                loading-icon="three-dots"
+                loading-right
+              >按钮文字</PSButton>
+              <button @click="loadingStatus">按我</button>
             </td>
           </tr>
           <tr>
@@ -124,7 +137,11 @@
             <td>@/icons/svg/*.svg</td>
             <td>''</td>
             <td>
-              <PSButton type="primary"><template #left-icon><i class="el-icon-share"></i></template>按钮文字</PSButton>
+              <PSButton type="primary">
+                <template #left-icon>
+                  <i class="el-icon-share"></i>
+                </template>按钮文字
+              </PSButton>
               <PSButton type="success" icon="user">按钮文字</PSButton>
             </td>
           </tr>
@@ -147,7 +164,7 @@
 
 <script>
 import PSContainer from '@/components/container/PSContainer'
-import PSButton from '@/components/PSButton'
+import PSButton from '@/components/core/PSButton/PSButton'
 
 export default {
   name: 'DemoDefault',
@@ -157,18 +174,18 @@ export default {
   },
   data() {
     return {
-      columns: [{
-        prop: 'value',
-        label: '名稱'
-      }],
+      columns: [
+        {
+          prop: 'value',
+          label: '名稱'
+        }
+      ],
       tableData: [
         { value: '实心按钮' },
         { value: '外匡按钮' },
         { value: '禁用按钮' }
       ],
-      colorTheme: [
-        'primary', 'success', 'warning', 'danger', 'intermediate'
-      ],
+      colorTheme: ['primary', 'success', 'warning', 'danger', 'intermediate'],
       status: false
     }
   },
@@ -193,16 +210,16 @@ export default {
 
 <style scoped>
 table {
-    width: 100%;
-    border-spacing: 2px;
-    box-sizing: border-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    word-break: break-all;
-    line-height: 23px;
-    padding-left: 10px;
-    padding-right: 10px;
+  width: 100%;
+  border-spacing: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  line-height: 23px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 td {
   padding: 12px 0;
@@ -214,7 +231,7 @@ td {
   border-bottom: 1px solid #ebeef5;
 }
 thead {
- color: #909399;
- font-weight: 500;
+  color: #909399;
+  font-weight: 500;
 }
 </style>

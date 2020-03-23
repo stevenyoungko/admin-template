@@ -6,12 +6,16 @@
       colorClass,
       outlineClass,
       roundClass,
-      circleClass
+      circleClass,
+      {'ps-icon--left': !iconPosition},
+      {'ps-icon--right': iconPosition},
     ]"
     @click="handleClick"
   >
-    <i v-if="!loadingRight && loading && !loadingIcon" class="el-icon-loading"></i>
-    <svg-icon v-if="!loadingRight && loading && loadingIcon" :icon-class="loadingIcon" />
+    <slot name="left-loading">
+      <i v-if="!loadingRight && loading && !loadingIcon" class="el-icon-loading"></i>
+      <svg-icon v-if="!loadingRight && loading && loadingIcon" :icon-class="loadingIcon" />
+    </slot>
     <slot name="left-icon">
       <svg-icon v-if="icon && !iconPosition" :icon-class="icon" />
     </slot>
@@ -21,8 +25,10 @@
     <slot name="right-icon">
       <svg-icon v-if="icon && iconPosition" :icon-class="icon" />
     </slot>
-    <i v-if="loadingRight && loading && !loadingIcon" class="el-icon-loading"></i>
-    <svg-icon v-if="loadingRight && loading && loadingIcon" :icon-class="loadingIcon" />
+    <slot name="right-loading">
+      <i v-if="loadingRight && loading && !loadingIcon" class="el-icon-loading"></i>
+      <svg-icon v-if="loadingRight && loading && loadingIcon" :icon-class="loadingIcon" />
+    </slot>
   </button>
 </template>
 
@@ -137,7 +143,7 @@ export default {
   border: 1px solid #DCDFE6;
   box-sizing: border-box;
   outline: none;
-  margin: 0;
+  margin: 2px;
   padding: 8px 16px;
   transition: 300ms;
   &--primary {
@@ -261,6 +267,12 @@ export default {
     border-radius: 50%;
     padding: 6px;
     font-size: 16px;
+    svg {
+      margin: 0px  !important;
+    }
+    span > i, svg{
+      margin: 0px  !important;
+    }
   }
   .ps-button--round {
     &--primary {
@@ -312,6 +324,18 @@ export default {
         color: $white;
         background: $Intermediate;
       }
+    }
+  }
+}
+.ps-icon {
+  &--left {
+    i, svg {
+      margin-right: 4px;
+    }
+  }
+  &--right {
+    i, svg {
+      margin-left: 4px;
     }
   }
 }

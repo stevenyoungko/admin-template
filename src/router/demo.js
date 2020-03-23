@@ -38,7 +38,7 @@ export default {
       name: 'DemoButton',
       component: () => import('@/views/demo/button.vue'),
       meta: {
-        title: '按鈕', noCache: true
+        title: '按鈕列表', noCache: true
       }
     }
   ]

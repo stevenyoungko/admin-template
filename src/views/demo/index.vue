@@ -1,7 +1,13 @@
 <template>
   <PSContainer v-loading="false" class="dashboard">
     <template v-slot:query-group>
-      <QueryContainer ref="query" :inline="true" :model="formInline" :rules="rules" :inline-message="false">
+      <QueryContainer
+        ref="query"
+        :inline="true"
+        :model="formInline"
+        :rules="rules"
+        :inline-message="false"
+      >
         <template v-slot:priority>
           <el-form-item label="输入框" prop="user">
             <el-input v-model="formInline.user" size="mini" placeholder="请输入内容" />
@@ -19,7 +25,13 @@
             />
           </el-form-item>
           <el-form-item label="计数器" prop="count">
-            <el-input-number v-model="formInline.count" size="mini" controls-position="right" :min="1" :max="10" />
+            <el-input-number
+              v-model="formInline.count"
+              size="mini"
+              controls-position="right"
+              :min="1"
+              :max="10"
+            />
           </el-form-item>
         </template>
         <template>
@@ -57,12 +69,19 @@
     </template>
     <template v-slot:query-action>
       <!-- <el-button type="primary" size="mini" @click="resetForm">重置</el-button> -->
-      <el-button type="primary" size="small" icon="el-icon-search" @click="submitForm">查询</el-button>
+      <!-- <el-button type="primary" size="small" icon="el-icon-search" @click="submitForm">查询</el-button> -->
+      <PSButton type="primary" @click="submitForm">
+        <i class="el-icon-search"></i>查询
+      </PSButton>
     </template>
     <template v-slot:controller>
       <div>
-        <el-button type="primary" size="mini" @click="operationDialog('', 'create')">新增</el-button>
-        <el-button type="primary" size="mini" @click="openDailog()">header 及 footer 固定的彈窗</el-button>
+        <!-- <el-button type="primary" size="mini" @click="operationDialog('', 'create')">新增</el-button> -->
+        <!-- <el-button type="primary" size="mini" @click="openDailog()">header 及 footer 固定的彈窗</el-button> -->
+        <PSButton type="primary" @click="operationDialog('', 'create')">
+          <i class="el-icon-search"></i>查询
+        </PSButton>
+        <PSButton type="primary" @click="openDailog()">header 及 footer 固定的彈窗</PSButton>
       </div>
     </template>
     <template #content>
@@ -76,8 +95,14 @@
         <el-table-column label="操作">
           <template slot-scope="scope">
             <div class="operation">
-              <el-button type="primary" size="mini" icon="el-icon-edit" circle @click="operationDialog(scope, 'edit')" />
-              <el-button type="danger" size="mini" icon="el-icon-delete" circle @click="DeleteDemo(scope)" />
+              <!-- <el-button type="primary" size="mini" icon="el-icon-edit" circle @click="operationDialog(scope, 'edit')" /> -->
+              <!-- <el-button type="danger" size="mini" icon="el-icon-delete" circle @click="DeleteDemo(scope)" /> -->
+              <PSButton type="primary" circle @click="operationDialog(scope, 'edit')">
+                <i class="el-icon-edit"></i>
+              </PSButton>
+              <PSButton type="danger" circle @click="DeleteDemo(scope)">
+                <i class="el-icon-delete"></i>
+              </PSButton>
             </div>
           </template>
         </el-table-column>
@@ -104,7 +129,13 @@
           <div>
             <el-form :model="editForm" label-width="auto">
               <el-form-item label="日期">
-                <el-date-picker v-model="editForm.date" size="mini" type="date" placeholder="选择日期" style="width: 100%;" />
+                <el-date-picker
+                  v-model="editForm.date"
+                  size="mini"
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 100%;"
+                />
               </el-form-item>
               <el-form-item label="姓名">
                 <el-input v-model="editForm.name" size="mini" />
@@ -116,8 +147,10 @@
           </div>
           <template #footer>
             <el-row type="flex" justify="end">
-              <el-button type="primary" size="mini" plain @click="showDiaLog = false">取消</el-button>
-              <el-button type="primary" size="mini" @click="showDiaLog = false">确认</el-button>
+              <!-- <el-button type="primary" size="mini" plain @click="showDiaLog = false">取消</el-button> -->
+              <!-- <el-button type="primary" size="mini" @click="showDiaLog = false">确认</el-button> -->
+              <PSButton outline @click="showDiaLog = false">取消</PSButton>
+              <PSButton type="primary" @click="showDiaLog = false">确认</PSButton>
             </el-row>
           </template>
         </PSDialogContainer>
@@ -125,13 +158,13 @@
 
       <el-dialog title="提示" :visible.sync="showDel" center width="400px">
         <PSDialogContainer>
-          <div>
-            是否要删除
-          </div>
+          <div>是否要删除</div>
           <template #footer>
             <el-row type="flex" justify="end">
-              <el-button size="mini" plain @click="showDel = false">取消</el-button>
-              <el-button type="danger" size="mini" @click="showDel = false">刪除</el-button>
+              <!-- <el-button size="mini" plain @click="showDel = false">取消</el-button> -->
+              <!-- <el-button type="danger" size="mini" @click="showDel = false">刪除</el-button> -->
+              <PSButton outline @click="showDel = false">取消</PSButton>
+              <PSButton type="danger" @click="showDel = false">刪除</PSButton>
             </el-row>
           </template>
         </PSDialogContainer>
@@ -140,25 +173,17 @@
       <el-dialog title="測試標題" :visible.sync="showDia">
         <PSDialogContainer>
           <div>
-            <div style="height: 200px;">
-              我是內容喔
-            </div>
-            <div style="height: 200px;">
-              我是內容喔
-            </div>
-            <div style="height: 200px;">
-              我是內容喔
-            </div>
-            <div style="height: 200px;">
-              我是內容喔
-            </div>
-            <div style="height: 200px;">
-              我是內容喔
-            </div>
+            <div style="height: 200px;">我是內容喔</div>
+            <div style="height: 200px;">我是內容喔</div>
+            <div style="height: 200px;">我是內容喔</div>
+            <div style="height: 200px;">我是內容喔</div>
+            <div style="height: 200px;">我是內容喔</div>
           </div>
           <template #footer>
-            <el-button type="primary" size="mini" @click="showDia = false">取消</el-button>
-            <el-button type="primary" size="mini" @click="showDia = false">确认</el-button>
+            <!-- <el-button type="primary" size="mini" @click="showDia = false">取消</el-button> -->
+            <!-- <el-button type="primary" size="mini" @click="showDia = false">确认</el-button> -->
+            <PSButton outline @click="showDia = false">取消</PSButton>
+            <PSButton type="primary" @click="showDia = false">确认</PSButton>
           </template>
         </PSDialogContainer>
       </el-dialog>
@@ -170,12 +195,14 @@
 import PSContainer from '@/components/container/PSContainer'
 import QueryContainer from '@/components/container/QueryContainer'
 import PSDialogContainer from '@/components/container/PSDialogContainer'
+import PSButton from '@/components/core/PSButton/PSButton'
 export default {
   name: 'DemoDefault',
   components: {
     PSContainer,
     QueryContainer,
-    PSDialogContainer
+    PSDialogContainer,
+    PSButton
   },
   data() {
     return {
@@ -335,9 +362,7 @@ export default {
       }
     }
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
     pagerEvent(e, type) {
       if (type === 'pageChange') {
@@ -380,7 +405,9 @@ export default {
       // }
     },
     operationDialog(scope, type) {
-      type === 'edit' ? this.opTitle = '编辑列表' : this.opTitle = '新增列表'
+      type === 'edit'
+        ? (this.opTitle = '编辑列表')
+        : (this.opTitle = '新增列表')
       if (type === 'edit') {
         this.editForm = {
           date: scope.row.date,
@@ -403,5 +430,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>
