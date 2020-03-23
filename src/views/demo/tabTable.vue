@@ -88,7 +88,6 @@
       <el-row type="flex" justify="end">
         <el-col>
           <el-pagination
-            small
             :current-page="pager.page"
             :page-sizes="[25, 50]"
             :page-size="pager.pageSize"
@@ -109,7 +108,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 import PSContainer from '@/components/container/PSContainer'
 import QueryContainer from '@/components/container/QueryContainer'
 export default {

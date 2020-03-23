@@ -26,12 +26,6 @@ export default {
       meta: { title: '标签表格' }
     },
     {
-      path: 'moment',
-      name: 'DemoMoment',
-      component: () => import('@/views/demo/moment'),
-      meta: { title: '表单元素' }
-    },
-    {
       path: 'richtext',
       name: 'DemoRichText',
       component: () => import('@/views/demo/richText.vue'),
