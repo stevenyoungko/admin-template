@@ -3,7 +3,7 @@
 
 ## 用法
 
-```ruby
+```html
 <template>
   <PSButton type="primary" >按钮文字</PSButton>
 </template>
@@ -21,14 +21,14 @@ export default {
 ``` 
 ## slot
 > 左右皆可插
-```ruby
-    <PSButton type="primary">
-      <template #left-loading></template>
-      <template #left-icon></template>
-      <template></template>
-      <template #right-loading></template>
-      <template #right-icon></template>
-    </PSButton>
+```html
+<PSButton type="primary">
+  <template #left-loading></template>
+  <template #left-icon></template>
+  <template></template>
+  <template #right-loading></template>
+  <template #right-icon></template>
+</PSButton>
 ```
 ## 属性
 
