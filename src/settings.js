@@ -9,12 +9,12 @@ module.exports = {
    * @type {String}
    * @description 變更document.title 預設 PS-admin
    */
-  title: 'PS-admin-test',
+  title: 'Ps-Demo',
   /**
    * @type {String}
    * @description 左上角LOGO字串, 登入首頁String
    */
-  logoName: 'PS-Admi',
+  logoName: 'Ps-Admin',
   /**
    * @type {boolean}
    * @description 設定是否使用 麵包屑功能

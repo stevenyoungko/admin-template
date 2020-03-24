@@ -45,6 +45,12 @@ npm run dev || npm run serve
 
 This will automatically open http://localhost:9487
 
+## PSComponents
++ PSContainer
++ QueryContainer
++ PSDialogContainer
++ [PSButton](http://gitlab.paradise-soft.com.tw/frontend/ps-admin/tree/master/src/components/core/PSButton)
+
 ## Build Production
 
 ```bash

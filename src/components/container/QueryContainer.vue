@@ -100,11 +100,11 @@ export default {
   &__collapseBtn {
       position: absolute;
       right: 4px;
-      top: 4px;
+      top: 6px;
       // margin-top: 11px;
       padding: 0;
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       flex-shrink: 0;
   }
   &__optional {
