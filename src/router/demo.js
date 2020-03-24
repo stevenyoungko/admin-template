@@ -5,7 +5,7 @@ export default {
   component: Layout,
   redirect: 'noRedirect',
   name: 'Demo',
-  meta: { title: '展示' },
+  meta: { title: '展示', noCache: true },
   children: [
     {
       path: 'normal',
@@ -31,6 +31,14 @@ export default {
       component: () => import('@/views/demo/richText.vue'),
       meta: {
         title: '富文本'
+      }
+    },
+    {
+      path: 'button',
+      name: 'DemoButton',
+      component: () => import('@/views/demo/button.vue'),
+      meta: {
+        title: '按鈕列表', noCache: true
       }
     }
   ]
