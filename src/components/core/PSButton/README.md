@@ -39,7 +39,9 @@ outline | 外框按鈕 |Boolean | true / false | false
 round | 圆角按钮 | Boolean | true / false | false
 circle | 圆形按钮 |Boolean | true / false | false
 disabled | 禁用按钮 | Boolean |  true / false | false 
-icon | icon图标 | String | @/icons/svg/ 里的 svg 党名 | ''
-iconPosition | icon位置 | Boolean | true / false | false 
+icon | icon图标 | String | @/icons/svg/*.svg (挡案名称即可) | ''
+loading-icon | 图标 | String | @/icons/svg/*.svg (挡案名称即可) | ''
+icon-position | icon位置 | Boolean | true / false | false 
+loading-right | loading位置 | Boolean | true / false | false 
 
 
