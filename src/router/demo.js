@@ -32,6 +32,14 @@ export default {
       meta: {
         title: '富文本'
       }
+    },
+    {
+      path: 'dialog',
+      name: 'DialogDemo',
+      component: () => import('@/views/demo/dialog'),
+      meta: {
+        title: '会画弹窗'
+      }
     }
   ]
 }
