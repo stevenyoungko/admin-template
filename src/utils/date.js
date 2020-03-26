@@ -37,6 +37,10 @@ export const getLast14Days = () => [moment().add(-14, 'days').startOf('day')._d,
 
 export const getNext14Days = () => [moment().startOf('day')._d, moment().add(13, 'days').endOf('day')._d]
 
+export const getLastYear = () => [moment().subtract(1, 'year').startOf('day')._d, moment().subtract(1, 'year').endOf('day')._d]
+
+export const getNextYear = () => [moment().add(1, 'year').startOf('day')._d, moment().add(1, 'year').endOf('day')._d]
+
 export const getDifferentDays = (end, start) => moment(end).diff(moment(start), 'days')
 // eslint-disable-next-line
 export const isEqualDate = (dateLeft, dateRight) => moment(dateLeft).isSame(dateRight)
