@@ -19,8 +19,9 @@
               end-placeholder="结束日期"
               format="yyyy-MM-dd  HH:mm:ss"
               value-format="yyyy-MM-dd  HH:mm:ss"
+              style="margin-right: 8px"
             />
-            <quick-time v-model="formInline.daterange" :list="deteOptions" style="margin-left: 8px;" />
+            <quick-time v-model="formInline.daterange" :list="deteOptions" />
           </el-form-item>
           <el-form-item label="输入框" prop="user">
             <el-input v-model="formInline.user" size="mini" placeholder="请输入内容" />

@@ -79,7 +79,6 @@ export function formatLocal2Utc(localTime, notRange) {
   }
 }
 
-
 // date-fns
 // export const getFormat = (date, formatStr, useZ) => format(date, formatStr) + ((useZ) ? 'Z': '')
 // export const getToday = () => format(new Date(), 'YYYY-MM-DD');

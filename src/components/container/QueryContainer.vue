@@ -66,6 +66,8 @@ export default {
     padding: 0 12px;
     border-radius: 4px;
     position: relative;
+    flex-wrap: wrap;
+    display: inline-flex;
     &.is-required:not(.is-no-asterisk) {
       .el-form-item__label:before {
         position: absolute;
@@ -88,11 +90,13 @@ export default {
   }
   & >>> .el-form-item__label{
     font-weight: 500;
+    flex-shrink: 0;
   }
   & >>> .el-form-item__content{
     display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
-    height: 40px;
+    line-height: initial;
     .el-form-item__error--inline{
       flex-shrink: 0;
       margin-top: 0;
