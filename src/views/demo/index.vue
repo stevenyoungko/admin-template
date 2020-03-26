@@ -34,7 +34,7 @@
             />
           </el-form-item>
         </template>
-        <!-- <template>
+        <template>
           <el-form-item label="活动区域" prop="region">
             <el-select v-model="formInline.region" size="mini" placeholder="活动区域" filterable>
               <el-option label="区域一" value="shanghai" />
@@ -64,7 +64,7 @@
               <el-checkbox label="选中且禁用" disabled />
             </el-checkbox-group>
           </el-form-item>
-        </template> -->
+        </template>
       </QueryContainer>
     </template>
     <template v-slot:query-action>
