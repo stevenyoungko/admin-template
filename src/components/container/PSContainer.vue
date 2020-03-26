@@ -80,7 +80,8 @@ $padding: 8px;
     flex: 1;
     padding: $padding;
     border-top: 1px solid #d9d9d9;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
   .ps-pager{
     border-top: 1px solid #d9d9d9;

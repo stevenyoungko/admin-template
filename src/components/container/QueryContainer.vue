@@ -1,6 +1,6 @@
 <template>
   <el-form ref="form" class="ps-query-container" v-bind="$attrs">
-    <template v-if="haspriority">
+    <template v-if="hasPriority">
       <el-button class="ps-query-container__collapseBtn" :icon="isCollapse ? 'el-icon-arrow-down' : 'el-icon-arrow-up'" @click="handle_collapse" />
       <div class="ps-query-container__priority">
         <slot name="priority"></slot>
@@ -22,13 +22,18 @@ export default {
     }
   },
   computed: {
-    haspriority() {
+    hasPriority() {
       return this.$slots.priority && (this.$slots.priority).length > 0
     }
   },
   created() {
     // console.log(this.$attrs)
     // console.log(this.$slots)
+  },
+  mounted() {
+    if (this.hasPriority && !this.$slots.default) {
+      console.warn('有優先展示的查詢組件，沒有次要展示組件，請檢查是否有需要放置優先展示的Slot。')
+    }
   },
   methods: {
     handle_collapse() {
