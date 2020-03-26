@@ -9,9 +9,6 @@
         :inline-message="false"
       >
         <template v-slot:priority>
-          <el-form-item label="输入框" prop="user">
-            <el-input v-model="formInline.user" size="mini" placeholder="请输入内容" />
-          </el-form-item>
           <el-form-item label="时间区间筛选" prop="daterange">
             <el-date-picker
               v-model="formInline.daterange"
@@ -20,9 +17,13 @@
               range-separator="至"
               start-placeholder="开始日期"
               end-placeholder="结束日期"
-              format="yyyy-MM-dd"
-              value-format="yyyy-MM-dd"
+              format="yyyy-MM-dd  HH:mm:ss"
+              value-format="yyyy-MM-dd  HH:mm:ss"
             />
+            <quick-time v-model="formInline.daterange" :list="deteOptions" style="margin-left: 8px;" />
+          </el-form-item>
+          <el-form-item label="输入框" prop="user">
+            <el-input v-model="formInline.user" size="mini" placeholder="请输入内容" />
           </el-form-item>
           <el-form-item label="计数器" prop="count">
             <el-input-number
@@ -76,12 +77,9 @@
     </template>
     <template v-slot:controller>
       <div>
-        <!-- <el-button type="primary" size="mini" @click="operationDialog('', 'create')">新增</el-button> -->
-        <!-- <el-button type="primary" size="mini" @click="openDailog()">header 及 footer 固定的彈窗</el-button> -->
         <PSButton type="primary" @click="operationDialog('', 'create')">
           <i class="el-icon-search"></i>查询
         </PSButton>
-        <PSButton type="primary" @click="openDailog()">header 及 footer 固定的彈窗</PSButton>
       </div>
     </template>
     <template #content>
@@ -169,24 +167,6 @@
           </template>
         </PSDialogContainer>
       </el-dialog>
-
-      <el-dialog title="測試標題" :visible.sync="showDia">
-        <PSDialogContainer>
-          <div>
-            <div style="height: 200px;">我是內容喔</div>
-            <div style="height: 200px;">我是內容喔</div>
-            <div style="height: 200px;">我是內容喔</div>
-            <div style="height: 200px;">我是內容喔</div>
-            <div style="height: 200px;">我是內容喔</div>
-          </div>
-          <template #footer>
-            <!-- <el-button type="primary" size="mini" @click="showDia = false">取消</el-button> -->
-            <!-- <el-button type="primary" size="mini" @click="showDia = false">确认</el-button> -->
-            <PSButton outline @click="showDia = false">取消</PSButton>
-            <PSButton type="primary" @click="showDia = false">确认</PSButton>
-          </template>
-        </PSDialogContainer>
-      </el-dialog>
     </template>
   </PSContainer>
 </template>
@@ -196,18 +176,20 @@ import PSContainer from '@/components/container/PSContainer'
 import QueryContainer from '@/components/container/QueryContainer'
 import PSDialogContainer from '@/components/container/PSDialogContainer'
 import PSButton from '@/components/core/PSButton/PSButton'
+import QuickTime from '@/components/core/quickTime'
+
 export default {
   name: 'DemoDefault',
   components: {
     PSContainer,
     QueryContainer,
     PSDialogContainer,
-    PSButton
+    PSButton,
+    QuickTime
   },
   data() {
     return {
       showDiaLog: false,
-      showDia: false,
       showDel: false,
       opTitle: '',
       formInline: {
@@ -217,8 +199,19 @@ export default {
         radio: 3,
         checkList: [],
         dateTime: '',
-        region: ''
+        region: '',
+        quickDaterange: ['', '']
       },
+      deteOptions: [
+        'today',
+        'yestoday',
+        'thisWeek',
+        'lastWeek',
+        '14daysAgo',
+        '14daysAfter',
+        'lastYear',
+        'nextYear'
+      ],
       rules: {
         user: [
           {
@@ -379,9 +372,6 @@ export default {
     },
     getList() {
       alert('submit')
-    },
-    openDailog() {
-      this.showDia = true
     },
     submitForm() {
       this.$refs.query.submitForm(this.getList)

@@ -83,6 +83,7 @@ export default {
     .el-form-item__error{
       padding-top: 0;
       margin-top: -2px;
+      z-index: 2;
     }
   }
   & >>> .el-form-item__label{
@@ -118,4 +119,5 @@ export default {
     // padding-top: 4px;
   }
 }
+
 </style>

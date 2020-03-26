@@ -69,6 +69,14 @@ export default {
         '14daysAfter': {
           name: '后14天',
           type: '14daysAfter'
+        },
+        'lastYear': {
+          name: '去年',
+          type: 'lastYear'
+        },
+        'nextYear': {
+          name: '明年',
+          type: 'nextYear'
         }
       }
     }
@@ -109,6 +117,10 @@ export default {
           return date.getLast14Days()
         case '14daysAfter':
           return date.getNext14Days()
+        case 'lastYear':
+          return date.getLastYear()
+        case 'nextYear':
+          return date.getNextYear()
         default:
           console.warn('Type Not Found')
       }
