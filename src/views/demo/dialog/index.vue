@@ -1,7 +1,7 @@
 <template>
   <div>
     <show-demo>
-      <el-button type="primary" plain @click="showScrollDialog('start')">header 及 footer 固定，content 滚动</el-button>
+      <PSButton type="primary" @click="showScrollDialog('start')">header 及 footer 固定，content 滚动</PSButton>
       <template #explain>
         <div style="margin: 10px">
           <el-card class="box-card">
@@ -18,8 +18,8 @@
     </show-demo>
 
     <show-demo>
-      <el-button type="primary" plain @click="showScrollDialog('center')">footer 置中</el-button>
-      <el-button type="primary" plain @click="showScrollDialog('end')">footer 靠右</el-button>
+      <PSButton type="primary" @click="showScrollDialog('center')">footer 置中</PSButton>
+      <PSButton type="primary" @click="showScrollDialog('end')">footer 靠右</PSButton>
       <template #explain>
         <div style="margin: 10px">
           <el-card class="box-card">
@@ -34,9 +34,24 @@
     </show-demo>
 
     <show-demo>
-      <el-button icon="el-icon-circle-plus-outline" type="primary" @click="showCrdDialog('create')">新增</el-button>
-      <el-button icon="el-icon-edit" type="primary" @click="showCrdDialog('update')">修改</el-button>
-      <el-button icon="el-icon-delete" type="danger" @click="showCrdDialog('delete')">删除</el-button>
+      <PSButton icon="el-icon-circle-plus-outline" type="primary" @click="showCrdDialog('create')">
+        <template #left-icon>
+          <i class="el-icon-circle-plus-outline"></i>
+        </template>
+        新增
+      </PSButton>
+      <PSButton icon="el-icon-edit" type="primary" @click="showCrdDialog('update')">
+        <template #left-icon>
+          <i class="el-icon-edit"></i>
+        </template>
+        修改
+      </PSButton>
+      <PSButton icon="el-icon-delete" type="danger" @click="showCrdDialog('delete')">
+        <template #left-icon>
+          <i class="el-icon-delete"></i>
+        </template>
+        删除
+      </PSButton>
 
       <template #explain>
         <div style="margin: 10px">
@@ -57,16 +72,15 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span>卡片名称</span>
-            <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
           </div>
           <div v-for="o in 30" :key="o" class="text item" style="padding: 8px 0">
             {{ '列表内容 ' + o }}
           </div>
         </el-card>
         <template #footer>
-          <el-row type="flex" :justify="scrollPosition">
-            <el-button size="mini" @click="showScroll = false">取消</el-button>
-            <el-button type="primary" size="mini" @click="showScroll = false">确认</el-button>
+          <el-row type="flex" :justify="footerPosition">
+            <PSButton outline @click="showScroll = false">取消</PSButton>
+            <PSButton type="primary" @click="showScroll = false">确认</PSButton>
           </el-row>
         </template>
       </PSDialogContainer>
@@ -85,34 +99,36 @@ import ShowDemo from './components/showDemo'
 import PSDialogContainer from '@/components/container/PSDialogContainer'
 import CrContent from './components/CrContent'
 import DeleteContent from './components/DeleteContent'
+import PSButton from '@/components/core/PSButton/PSButton'
 
 export default {
   name: 'DialogDemo',
   components: {
-    ShowDemo, PSDialogContainer, CrContent, DeleteContent
+    ShowDemo, PSDialogContainer, CrContent, DeleteContent, PSButton
   },
   data() {
     return {
       showScroll: false,
       showCrd: false,
       crdMethod: 'create',
+      footerPosition: 'start',
       scrollExplainText: `
-        <el-button type="primary" plain @click="showScroll = true">header 及 footer 固定，content 滚动</el-button>
+        <PSButton type="primary" @click="showScroll = true">header 及 footer 固定，content 滚动</PSButton>
 
         <el-dialog title="測試標題" :visible.sync="showScroll">
           <PSDialogContainer>
             <el-card class="box-card">
               <div slot="header" class="clearfix">
                 <span>卡片名称</span>
-                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                <PSButton style="float: right; padding: 3px 0" type="text">操作按钮</PSButton>
               </div>
               <div v-for="o in 30" :key="o" class="text item" style="padding: 8px 0">
                 {{ '列表内容 ' + o }}
               </div>
             </el-card>
             <template #footer>
-              <el-button type="primary" size="mini" plain @click="showScroll = false">取消</el-button>
-              <el-button type="primary" size="mini" @click="showScroll = false">确认</el-button>
+              <PSButton type="primary" outline @click="showScroll = false">取消</PSButton>
+              <PSButton type="primary" @click="showScroll = false">确认</PSButton>
             </template>
           </PSDialogContainer>
         </el-dialog>
@@ -120,15 +136,15 @@ export default {
       positionExplainText: `
         <template #footer>
           <el-row type="flex" justify="center">
-            <el-button type="primary" size="mini" plain @click="showScroll = false">取消</el-button>
-            <el-button type="primary" size="mini" @click="showScroll = false">确认</el-button>
+            <PSButton type="primary" outline @click="showScroll = false">取消</PSButton>
+            <PSButton type="primary" @click="showScroll = false">确认</PSButton>
           </el-row>
         </template>
 
         <template #footer>
           <el-row type="flex" justify="end">
-            <el-button type="primary" size="mini" plain @click="showScroll = false">取消</el-button>
-            <el-button type="primary" size="mini" @click="showScroll = false">确认</el-button>
+            <PSButton type="primary" outline @click="showScroll = false">取消</PSButton>
+            <PSButton type="primary" @click="showScroll = false">确认</PSButton>
           </el-row>
         </template>
       `,
@@ -158,8 +174,10 @@ export default {
             </el-form>
             <template #footer>
               <el-row type="flex" justify="end">
-                <el-button type="primary" size="mini" plain @click="$emit('closeDialog')">取消</el-button>
-                <el-button type="primary" size="mini" @click="$emit('closeDialog')">{{ mode === 'create' ? '确认' : '保存' }}</el-button>
+                <PSButton type="primary" outline @click="$emit('closeDialog')">取消</PSButton>
+                <PSButton type="primary" @click="$emit('closeDialog')">
+                  {{ mode === 'create' ? '确认' : '保存' }}
+                </PSButton>
               </el-row>
             </template>
           </PSDialogContainer>
@@ -183,7 +201,7 @@ export default {
   },
   methods: {
     showScrollDialog(position) {
-      this.scrollPosition = position
+      this.footerPosition = position
       this.showScroll = true
     },
     showCrdDialog(method) {
