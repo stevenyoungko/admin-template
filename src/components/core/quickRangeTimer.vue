@@ -1,12 +1,24 @@
 <template>
-  <el-row class="quick-time">
-    <el-button
-      v-for="(item, index) in activeList"
-      :key="`dbtn-${index}`"
-      size="mini"
-      :type="activeType === item.type ? 'primary' : 'plain'"
-      @click="updateTime(item.type)"
-    >{{ item.name }}</el-button>
+  <el-row type="flex">
+    <el-date-picker
+      v-model="datePickerModel"
+      type="datetimerange"
+      style="margin-right: 8px"
+      :default-time="['00:00:00', '23:59:59']"
+      format="yyyy-MM-dd HH:mm:ss"
+      value-format="yyyy-MM-dd HH:mm:ss"
+      v-bind="$attrs"
+    />
+    <el-row class="quick-time">
+      <el-button
+        v-for="(item, index) in activeList"
+        :key="`dbtn-${index}`"
+        size="mini"
+        :type="activeType === item.type ? 'primary' : 'plain'"
+        @click="updateTime(item.type)"
+      >{{ item.name }}</el-button>
+      <slot name="button"></slot>
+    </el-row>
   </el-row>
 </template>
 
@@ -18,6 +30,10 @@ export default {
     event: 'setDate'
   },
   props: {
+    dayRange: {
+      type: Array,
+      default: () => ['', '']
+    },
     defaultTime: {
       type: String,
       default: 'today'
@@ -88,10 +104,18 @@ export default {
           return this.btnList[item]
         }
       })
+    },
+    datePickerModel: {
+      get: function() {
+        return this.dayRange
+      },
+      set: function(val) {
+        this.setDate(val)
+      }
     }
   },
   watch: {
-    '$attrs.dayRange'(val, oldval) {
+    'dayRange'(val, oldval) {
       this.isEqualType(val)
     }
   },
@@ -122,23 +146,34 @@ export default {
         case 'nextYear':
           return date.getNextYear()
         default:
-          console.warn('Type Not Found')
+          console.warn(`Type Not Found。 Please check @/components/core/quickRangeTime.vue`)
       }
+    },
+    setDate(val) {
+      this.$emit('setDate', val)
     },
     updateTime(type) {
       this.$emit('setDate', this.setTimeWithBtn(type))
     },
     isEqualType(val) {
+      this.activeType = ''
+      if (val === null) return
       for (let i = 0; i < this.activeList.length; i++) {
         if (date.isEqualDateRange(val, this.setTimeWithBtn(this.activeList[i].type))) {
           this.activeType = this.activeList[i].type
+          break
         }
       }
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
+ <style lang="scss" scoped>
+  .quick-time {
+    & >>> {
+      .el-button+.el-button {
+        margin-left: 2px;
+      }
+    }
+  }
+ </style>

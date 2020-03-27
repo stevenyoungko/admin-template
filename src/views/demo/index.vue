@@ -10,18 +10,15 @@
       >
         <template v-slot:priority>
           <el-form-item label="时间区间筛选" prop="daterange">
-            <el-date-picker
+            <QuickRangeTimer
               v-model="formInline.daterange"
-              type="datetimerange"
+              :list="deteOptions"
+              type="monthrange"
               size="mini"
               range-separator="至"
-              start-placeholder="开始日期"
-              end-placeholder="结束日期"
-              format="yyyy-MM-dd  HH:mm:ss"
-              value-format="yyyy-MM-dd  HH:mm:ss"
-              style="margin-right: 8px"
+              start-placeholder="開始"
+              end-placeholder="结束"
             />
-            <quick-time v-model="formInline.daterange" :list="deteOptions" />
           </el-form-item>
           <el-form-item label="输入框" prop="user">
             <el-input v-model="formInline.user" size="mini" placeholder="请输入内容" />
@@ -177,7 +174,7 @@ import PSContainer from '@/components/container/PSContainer'
 import QueryContainer from '@/components/container/QueryContainer'
 import PSDialogContainer from '@/components/container/PSDialogContainer'
 import PSButton from '@/components/core/PSButton/PSButton'
-import QuickTime from '@/components/core/quickTime'
+import QuickRangeTimer from '@/components/core/quickRangeTimer'
 
 export default {
   name: 'DemoDefault',
@@ -186,7 +183,7 @@ export default {
     QueryContainer,
     PSDialogContainer,
     PSButton,
-    QuickTime
+    QuickRangeTimer
   },
   data() {
     return {
@@ -228,7 +225,7 @@ export default {
             message: '请输入时间区间',
             trigger: 'blur',
             validator: function(rule, value, callback) {
-              console.log(rule, value, callback)
+              // console.log(rule, value, callback)
               if (value == null || (value[0] === '' && value[1] === '')) {
                 callback(new Error('请输入时间区间'))
               } else {
