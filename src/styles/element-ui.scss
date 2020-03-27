@@ -60,7 +60,17 @@
       }
     }
   }
+
 }
+
+.app-wrapper {
+  .el-button {
+    border: none;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
 .el-message-box__wrapper {
   .el-message-box {
     padding: 0;

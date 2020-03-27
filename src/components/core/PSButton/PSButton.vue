@@ -140,10 +140,9 @@ export default {
   cursor: pointer;
   text-align: center;
   background: $white;
-  border: 1px solid #DCDFE6;
+  border: none;
   box-sizing: border-box;
   outline: none;
-  margin: 2px;
   padding: 8px 16px;
   transition: 300ms;
   &--primary {

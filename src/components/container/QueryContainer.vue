@@ -110,9 +110,10 @@ export default {
   &__collapseBtn {
       position: absolute;
       right: 4px;
-      top: 6px;
+      top: 4px;
       // margin-top: 11px;
-      padding: 0;
+      padding: 0 !important;
+      border: 1px solid #DCDFE6 !important;
       width: 30px;
       height: 30px;
       flex-shrink: 0;
