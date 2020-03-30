@@ -16,8 +16,8 @@
     </el-form>
     <template #footer>
       <el-row type="flex" justify="end">
-        <el-button type="primary" size="mini" plain @click="$emit('closeDialog')">取消</el-button>
-        <el-button type="primary" size="mini" @click="$emit('closeDialog')">{{ mode === 'create' ? '确认' : '保存' }}</el-button>
+        <PSButton type="primary" outline @click="$emit('closeDialog')">取消</PSButton>
+        <PSButton type="primary" @click="$emit('closeDialog')">{{ mode === 'create' ? '确认' : '保存' }}</PSButton>
       </el-row>
     </template>
   </PSDialogContainer>
@@ -25,11 +25,12 @@
 
 <script>
 import PSDialogContainer from '@/components/container/PSDialogContainer'
+import PSButton from '@/components/core/PSButton/PSButton'
 
 export default {
   name: 'CrContent',
   components: {
-    PSDialogContainer
+    PSDialogContainer, PSButton
   },
   props: {
     mode: {
