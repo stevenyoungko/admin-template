@@ -10,7 +10,8 @@
         :unique-opened="false"
         :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
-        mode="vertical"
+        :mode="menuMode"
+        :class="{'sidebar--flex': menuMode === 'horizontal'}"
       >
         <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
@@ -39,7 +40,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 // import Logo from './Logo'
 import Hamburger from '@/components/core/Hamburger'
 import SidebarItem from './SidebarItem'
@@ -61,6 +62,20 @@ export default {
     ...mapGetters([
       'sidebar'
     ]),
+    ...mapState({
+      layoutType: state => state.settings.layoutType
+    }),
+    menuMode() {
+      switch (this.layoutType) {
+        case 'default':
+          return 'vertical'
+        case 'xuanya':
+          return 'horizontal'
+        default:
+          console.error('请带 default 或 xuanya')
+          return 'vertical'
+      }
+    },
     routes() {
       return this.$router.options.routes
     },
@@ -163,5 +178,9 @@ export default {
       }
     }
   }
+}
+.sidebar--flex {
+  display: flex;
+  overflow-x: inherit;
 }
 </style>

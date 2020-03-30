@@ -167,7 +167,7 @@ import PSContainer from '@/components/container/PSContainer'
 import PSButton from '@/components/core/PSButton/PSButton'
 
 export default {
-  name: 'DemoDefault',
+  name: 'DemoButton',
   components: {
     PSContainer,
     PSButton

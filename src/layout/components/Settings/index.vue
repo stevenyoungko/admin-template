@@ -11,6 +11,16 @@
         <span>No Breadcrumb</span>
         <el-switch v-model="noBreadcrumb" size="mini" class="drawer-switch" />
       </div>
+      <div class="drawer-item ">
+        <span>Layout</span>
+        <el-select v-model="layoutChange" placeholder="请选择" :popper-append-to-body="false" size="small" class="drawer-switch" style="width: 160px">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          /></el-select>
+      </div>
     </div>
   </div>
 </template>
@@ -21,7 +31,18 @@ import ThemePicker from '@/components/core/ThemePicker'
 export default {
   components: { ThemePicker },
   data() {
-    return {}
+    return {
+      options: [
+        {
+          value: 'default',
+          label: 'default (橫式)'
+        },
+        {
+          value: 'xuanya',
+          label: 'xuanya (直式)'
+        }
+      ]
+    }
   },
   computed: {
     noBreadcrumb: {
@@ -33,6 +54,14 @@ export default {
           key: 'noBreadcrumb',
           value: value
         })
+      }
+    },
+    layoutChange: {
+      get() {
+        return this.$store.state.settings.layoutType
+      },
+      set(value) {
+        this.$store.dispatch('settings/setLayoutType', value)
       }
     }
   },
@@ -65,6 +94,9 @@ export default {
     color: rgba(0, 0, 0, .65);
     font-size: 14px;
     padding: 12px 0;
+    >>> .el-select-dropdown {
+      left: 87px !important;
+    }
   }
 
   .drawer-switch {
