@@ -35,7 +35,11 @@ const mutations = {
 }
 
 const actions = {
-  toggleSideBar({ commit }) {
+  // 直立式版面不需要 siderBar 收合
+  toggleSideBar({ commit, state }, notoggle) {
+    if (state.sidebar.opened && notoggle) {
+      commit('TOGGLE_SIDEBAR')
+    }
     commit('TOGGLE_SIDEBAR')
   },
   closeSideBar({ commit }, { withoutAnimation }) {
