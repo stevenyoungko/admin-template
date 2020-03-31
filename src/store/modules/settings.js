@@ -2,13 +2,16 @@ import variables from '@/styles/element-variables.scss'
 import defaultSettings from '@/settings'
 
 const { showSettings, logoName, noBreadcrumb, layoutType } = defaultSettings
+const checkLayout = ['default', 'xuanya']
 
 const state = {
   theme: variables.theme,
   showSettings,
   logoName,
   noBreadcrumb,
-  layoutType
+  layoutType: checkLayout.includes(localStorage.getItem('layoutStatus'))
+    ? localStorage.getItem('layoutStatus')
+    : layoutType
 }
 
 const mutations = {
@@ -18,9 +21,7 @@ const mutations = {
     }
   },
   SET_LAYOUT_TYPE: (state, payload) => {
-    const checkArray = ['default', 'xuanya']
-    console.log('payload', payload)
-    if (checkArray.includes(payload)) {
+    if (checkLayout.includes(payload)) {
       state.layoutType = payload
     } else {
       state.layoutType = 'default'
