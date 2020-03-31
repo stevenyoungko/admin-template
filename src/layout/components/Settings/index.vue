@@ -61,7 +61,6 @@ export default {
         return this.$store.state.settings.layoutType
       },
       set(value) {
-        localStorage.setItem('layoutStatus', value)
         this.$store.dispatch('settings/setLayoutType', value)
       }
     }
