@@ -8,7 +8,7 @@ const state = {
   showSettings,
   logoName,
   noBreadcrumb,
-  layoutType
+  layoutType: localStorage.getItem('layoutStatus') || layoutType || 'default'
 }
 
 const mutations = {
@@ -18,13 +18,8 @@ const mutations = {
     }
   },
   SET_LAYOUT_TYPE: (state, payload) => {
-    const checkArray = ['default', 'xuanya']
-    console.log('payload', payload)
-    if (checkArray.includes(payload)) {
-      state.layoutType = payload
-    } else {
-      state.layoutType = 'default'
-    }
+    localStorage.setItem('layoutStatus', payload)
+    state.layoutType = payload
   }
 }
 
