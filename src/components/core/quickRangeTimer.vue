@@ -1,13 +1,10 @@
 <template>
   <el-row type="flex">
     <el-date-picker
+      ref="picker"
       v-model="datePickerModel"
-      type="datetimerange"
       style="margin-right: 8px"
-      :default-time="['00:00:00', '23:59:59']"
-      format="yyyy-MM-dd HH:mm:ss"
-      value-format="yyyy-MM-dd HH:mm:ss"
-      v-bind="$attrs"
+      v-bind="settings"
     />
     <el-row class="quick-time">
       <el-button
@@ -98,6 +95,15 @@ export default {
     }
   },
   computed: {
+    settings() {
+      return {
+        'type': 'datetimerange',
+        'format': 'yyyy-MM-dd HH:mm:ss',
+        'value-format': 'yyyy-MM-dd HH:mm:ss',
+        'default-time': ['00:00:00', '23:59:59'],
+        ...this.$attrs
+      }
+    },
     activeList() {
       return this.list.map(item => {
         if (this.btnList[item]) {
@@ -119,7 +125,7 @@ export default {
       this.isEqualType(val)
     }
   },
-  created() {
+  mounted() {
     this.updateTime(this.defaultTime)
   },
   methods: {
@@ -145,6 +151,8 @@ export default {
           return date.getLastYear()
         case 'nextYear':
           return date.getNextYear()
+        case 'none':
+          return ['', '']
         default:
           console.warn(`Type Not Found。 Please check @/components/core/quickRangeTime.vue`)
       }
@@ -153,13 +161,13 @@ export default {
       this.$emit('setDate', val)
     },
     updateTime(type) {
-      this.$emit('setDate', this.setTimeWithBtn(type))
+      this.datePickerModel = this.$refs['picker'].formatToString(this.setTimeWithBtn(type)) || ['', '']
     },
     isEqualType(val) {
       this.activeType = ''
       if (val === null) return
       for (let i = 0; i < this.activeList.length; i++) {
-        if (date.isEqualDateRange(val, this.setTimeWithBtn(this.activeList[i].type))) {
+        if (date.isEqualDateRange(val, this.$refs['picker'].formatToString(this.setTimeWithBtn(this.activeList[i].type)))) {
           this.activeType = this.activeList[i].type
           break
         }
@@ -172,7 +180,8 @@ export default {
   .quick-time {
     & >>> {
       .el-button+.el-button {
-        margin-left: 2px;
+        margin: 0 !important;
+        margin-left: 4px !important;
       }
     }
   }

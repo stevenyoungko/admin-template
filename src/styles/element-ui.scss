@@ -42,6 +42,12 @@
     display: block
   }
 }
+.el-button+.el-button {
+  margin-top: 2px;
+  margin-left: 0;
+  margin-right: 4px;
+  margin-bottom: 2px;
+}
 #app {
   .el-dialog__wrapper {
     .el-dialog {
