@@ -24,7 +24,7 @@ module.exports = {
    * @type {boolean} true | false
    * @description Whether show the settings right-panel
    */
-  showSettings: false,
+  showSettings: true,
   /**
    * @type {string}
    * @description set TokenKey in LocalStorage Detail Check @/utils/auth.js
@@ -34,5 +34,11 @@ module.exports = {
    * @type {boolean}
    * @description 設定devServe 是否使用Mock Server Data | ps: 設定過要重新跑一次 yarn serve
    */
-  devUseMock: true
+  devUseMock: true,
+
+  layoutType: 'default'
+  /**
+   * @type {string}
+   * @description 設定layoutType 目前有的主题 [default, xuanya]
+   */
 }

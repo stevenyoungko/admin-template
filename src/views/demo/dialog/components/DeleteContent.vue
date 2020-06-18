@@ -3,8 +3,8 @@
     確定要刪除？
     <template #footer>
       <el-row type="flex" justify="end">
-        <el-button size="mini" @click="$emit('closeDialog')">取消</el-button>
-        <el-button type="danger" size="mini" @click="$emit('closeDialog')">删除</el-button>
+        <PSButton outline @click="$emit('closeDialog')">取消</PSButton>
+        <PSButton type="danger" @click="$emit('closeDialog')">删除</PSButton>
       </el-row>
     </template>
   </PSDialogContainer>
@@ -12,11 +12,13 @@
 
 <script>
 import PSDialogContainer from '@/components/container/PSDialogContainer'
+import PSButton from '@/components/core/PSButton/PSButton'
 
 export default {
   name: 'DeleteContent',
   components: {
-    PSDialogContainer
+    PSDialogContainer,
+    PSButton
   },
   props: {
     mode: {
